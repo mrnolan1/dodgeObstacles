@@ -20,6 +20,7 @@ public:
     ~Character() {};
     void handleInput(sf::Event& event, sf::RenderWindow& window);
     int getRow();
+    void setSkin(std::string file);
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
     int mRow;

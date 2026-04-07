@@ -34,6 +34,14 @@ int Character::getRow() {
     return mRow;
 }
 
+void Character::setSkin(std::string file)
+{
+    if(mTexture.loadFromFile(file))
+    {
+        std::cerr << "Error opening skin file" << std::endl;
+    }
+}
+
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(mCharacter);
 }
