@@ -8,7 +8,7 @@ sf::RenderWindow window(sf::VideoMode(800, 500), "obstacle test");
 slowObstacle obstacle(0);
 mediumObstacle obstacle2(2);
 fastObstacle obstacle3(4);
-int main()
+int Justin_main()
 {
 while(window.isOpen())
 {

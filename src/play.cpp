@@ -1,1 +1,14 @@
-//this will be for the play class(its own seperate functions for handling inputs, rendering, and updating screen for the actual game)
+/**
+ * @file play.cpp
+ * @author Isaiah
+ * @brief 
+ * @date 2026-04-04
+ */
+
+#include "../hdr/play.hpp"
+
+Play::Play(sf::RenderWindow& playWindow) {
+    for(int i = 0; i < 5; i++)
+        mRow[i].setRow(i);
+}
+

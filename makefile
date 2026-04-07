@@ -6,7 +6,8 @@
 # If those later don't require all headers, adjust accordingly.
 
 CC = g++ 
-FLAGS = -Wall -std=c++17 -pedantic-errors
+FLAGS = -Wall -std=c++17 -pedantic-errors -I/opt/homebrew/include
+LDFLAGS = -L/opt/homebrew/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 
 
@@ -25,11 +26,11 @@ runTest: exe/test
 
 
 exe/game: obj/main.o obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o | exe
-	$(CC) $(FLAGS) $^ -o $@
+	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
 
 
 exe/test: obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o obj/test.o | exe
-	$(CC) $(FLAGS) $^ -o $@
+	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
 
 
 
@@ -71,3 +72,8 @@ obj:
 
 exe:
 	mkdir -p exe
+
+
+
+clean:
+	rm -rf obj exe
