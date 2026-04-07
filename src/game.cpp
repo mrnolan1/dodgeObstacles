@@ -12,12 +12,18 @@ Game::Game(sf::RenderWindow& window) {
 }
 
 void Game::handleInput(sf::RenderWindow& window) {
+    sf::Event event;
+    while(window.pollEvent(event)) {
+        if(event.type == sf::Event::Closed)
+            window.close();
 
+        mScreenState = mMenu.handleInput(event, window);
+    }
 }
 
-void Game::update() {
+void Game::update(sf::RenderWindow& window, float dt) {
 
 }
-void Game::render() {
+void Game::render(sf::RenderWindow& window) {
 
 }
