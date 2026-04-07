@@ -4,6 +4,10 @@
  * @brief  
  * @date 
  */
+
+#ifndef MENU_HPP
+#define MENU_HPP
+
 #include "states.hpp"
 #include "button.hpp"
 #include <SFML/Graphics.hpp>
@@ -31,3 +35,5 @@ private:
     Button mControls;
     Button mSkins;
 };
+
+#endif

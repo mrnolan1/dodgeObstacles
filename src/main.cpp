@@ -8,11 +8,14 @@
 #include <iostream> 
 #include "../hdr/menu.hpp" 
 #include "../hdr/button.hpp" 
+#include "../hdr/skins.hpp"
+#include "../hdr/character.hpp"
 
 int main() 
 { 
     sf::RenderWindow window(sf::VideoMode(800, 500), "Menu class test"); 
-    Menu mainMenu; 
+    Skins SkinMenu; 
+    Character chara;
     while (window.isOpen()) 
    { 
        sf::Event event; 
@@ -22,13 +25,11 @@ int main()
            { 
                 window.close(); 
            } 
-           mainMenu.handleInput(event, window); 
-           mainMenu.update(); 
+           SkinMenu.handleInput(event, window, chara); 
+           SkinMenu.update(); 
        } 
        window.clear(); 
-       mainMenu.moveBackground();
-       mainMenu.fadeInText();
-       mainMenu.render(window); 
+       SkinMenu.render(window); 
        window.display(); 
 
    } 
