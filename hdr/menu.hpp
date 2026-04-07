@@ -5,6 +5,7 @@
  * @date 
  */
 
+
 #ifndef MENU_HPP
 #define MENU_HPP
 #include "button.hpp"
@@ -12,20 +13,24 @@
 
 enum screenState {menu, play, howtoplay, skins};
 
+
 class Menu
 {
 public:
     Menu();
+
     screenState handleInput(sf::Event& event, sf::RenderWindow& mWindow);
     void update();
     void moveBackground();
     void fadeInText();
+
     void render(sf::RenderWindow& window);
 
 private:
     sf::Text mTitle;
     sf::Font mFont;
     sf::Sprite mBackground;
+
     sf::Sprite mSecondBackground;
     sf::Texture mBackgroundTexture;
     float mBackgroundCounter = 0;
@@ -37,3 +42,4 @@ private:
 };
 
 #endif
+

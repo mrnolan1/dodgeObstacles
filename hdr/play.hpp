@@ -23,7 +23,6 @@ private:
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
-    sf::Sprite mBackground;
     sf::Texture mTextureBackground;
     Row mRow[5];
 };

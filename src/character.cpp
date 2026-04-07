@@ -20,6 +20,7 @@ Character::Character() {
     mCharacter.setPosition(750, (100*mRow+50)); //set position to given row in character column
 }
 
+
 void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
     if (event.type == sf::Event::KeyPressed) {
         if (((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::Left)) && mRow < 4)

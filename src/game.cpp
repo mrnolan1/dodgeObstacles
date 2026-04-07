@@ -1,3 +1,4 @@
+
 /**
  * @file game.cpp
  * @author Isaiah Preston
@@ -15,9 +16,11 @@ void Game::handleInput(sf::RenderWindow& window) {
 
 }
 
-void Game::update() {
+void Game::update(sf::RenderWindow& window, float dt) {
 
 }
+
 void Game::render() {
 
 }
+

@@ -25,9 +25,11 @@ Menu::Menu()
         exit(2);
     }
     mBackground.setTexture(mBackgroundTexture);
+
     mSecondBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0,0});
     mSecondBackground.setPosition({-800, 0});
+
 
     mTitle.setFont(mFont);
     //choose the font size based on button size
@@ -36,7 +38,9 @@ Menu::Menu()
     mTitle.setString("    Dodge\nObstacles!");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
     mTitle.setPosition({400,125});
+
     mTitle.setFillColor({0,0,0,0});
+
     
     mPlay.setText("Play");
     mPlay.setPosition({400, 400});
@@ -65,10 +69,12 @@ Menu::Menu()
  * @param window 
  * @return State 
  */
+
 screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mPlay.handleInput(event, window)){
         return play;
+
     }
     else if (mControls.handleInput(event, window)){
         return howtoplay;
@@ -76,7 +82,9 @@ screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
     else if (mSkins.handleInput(event, window)){
         return skins;
     }
+
     return menu;
+
 }
 
 /**
@@ -89,6 +97,7 @@ void Menu::update()
     mControls.update();
     mSkins.update();
 }
+
 
 void Menu::moveBackground()
 {
@@ -117,6 +126,7 @@ void Menu::fadeInText()
     }
     std::cout << static_cast<int>(mColorCounter) << std::endl;
 }
+
 /**
  * @brief render each button
  * 
@@ -125,7 +135,8 @@ void Menu::fadeInText()
 void Menu::render(sf::RenderWindow& window)
 {
     window.draw(mBackground);
-    window.draw(mSecondBackground);
+
+
     window.draw(mTitle);
     window.draw(mPlay);
     window.draw(mControls);

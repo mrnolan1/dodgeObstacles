@@ -22,5 +22,3 @@ obsType Row::getObsType() {
 void Row::setObsType(obsType curObsType) {
     mObsType = curObsType;
 }
-
-void Row::

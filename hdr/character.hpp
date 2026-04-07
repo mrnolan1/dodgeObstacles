@@ -9,21 +9,27 @@
  * @date 2026-04-02
  */
 
+
 #pragma once
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+
 class Character : public sf::Drawable{
 public:
     Character();
     ~Character() {};
+
     void handleInput(sf::Event& event, sf::RenderWindow& window);
     int getRow();
     void setSkin(std::string file);
+
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 private:
     int mRow;
     sf::Sprite mCharacter;
     sf::Texture mTexture;
+
 };
+

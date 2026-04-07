@@ -1,3 +1,4 @@
+
 /**
  * @file game.hpp
  * @author Isaiah Preston
@@ -16,9 +17,10 @@ public:
     Game(sf::RenderWindow& window);
     ~Game() {};
     void handleInput(sf::RenderWindow& window);
-    void update(sf::RenderWindow& window, float dt, );
+    void update(sf::RenderWindow& window, float dt);
     void render();
 private:
     Menu mMenu;
     screenState mScreenState;
 };
+
