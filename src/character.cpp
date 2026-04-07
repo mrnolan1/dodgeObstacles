@@ -20,16 +20,14 @@ Character::Character() {
     mCharacter.setPosition(750, (100*mRow+50)); //set position to given row in character column
 }
 
-void Character::moveDown() {
-    if(mRow < 4) 
-        mRow++;
-    mCharacter.setPosition(750, (100*mRow+50));
-}
-
-void Character::moveUp() {
-    if(mRow > 0)
-        mRow--;
-    mCharacter.setPosition(750, (100*mRow+50));
+void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
+    if (event.type == sf::Event::KeyPressed) {
+        if (((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::Left)) && mRow < 4)
+            mRow++;
+        else if (((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::Right)) && mRow > 0)
+            mRow--;
+        mCharacter.setPosition(750, (100*mRow+50));
+    }
 }
 
 int Character::getRow() {
@@ -45,5 +43,5 @@ void Character::setSkin(std::string file)
 }
 
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(mCharacter);  // or mSprite
+    target.draw(mCharacter);
 }

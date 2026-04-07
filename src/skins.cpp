@@ -1,4 +1,5 @@
 #include "../hdr/skins.hpp"
+#include "../hdr/character.hpp"
 
 Skins::Skins()
 {

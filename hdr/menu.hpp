@@ -7,16 +7,16 @@
 
 #ifndef MENU_HPP
 #define MENU_HPP
-
-#include "states.hpp"
 #include "button.hpp"
 #include <SFML/Graphics.hpp>
+
+enum screenState {menu, play, howtoplay, skins};
 
 class Menu
 {
 public:
     Menu();
-    State handleInput(sf::Event& event,  sf::RenderWindow& mWindow);
+    screenState handleInput(sf::Event& event, sf::RenderWindow& mWindow);
     void update();
     void moveBackground();
     void fadeInText();

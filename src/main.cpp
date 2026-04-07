@@ -1,3 +1,4 @@
+
 /** 
  * @file main.cpp 
  * @author Matthew Nolan 
@@ -13,7 +14,7 @@
 
 int main() 
 { 
-    sf::RenderWindow window(sf::VideoMode(800, 500), "Menu class test"); 
+    sf::RenderWindow window(sf::VideoMode(800, 500), "Skins class test"); 
     Skins SkinMenu; 
     Character chara;
     while (window.isOpen()) 

@@ -65,10 +65,10 @@ Menu::Menu()
  * @param window 
  * @return State 
  */
-State Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
+screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mPlay.handleInput(event, window)){
-        return game;
+        return play;
     }
     else if (mControls.handleInput(event, window)){
         return howtoplay;
@@ -76,7 +76,7 @@ State Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
     else if (mSkins.handleInput(event, window)){
         return skins;
     }
-    return welcome;
+    return menu;
 }
 
 /**

@@ -12,7 +12,6 @@
 #define SKINS_HPP
 
 #include "button.hpp"
-#include "states.hpp"
 #include "menu.hpp"
 #include "character.hpp"
 #include <SFML/Graphics.hpp>
