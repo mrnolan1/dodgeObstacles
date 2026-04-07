@@ -33,7 +33,7 @@ exe/test: obj/button.o obj/character.o obj/game.o obj/howtoplay.o obj/obstacle.o
 
 
 
-obj/main.o: src/main.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/main.hpp hdr/skins.hpp | obj
+obj/main.o: src/main.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/howtoplay.hpp hdr/obstacle.hpp hdr/play.hpp hdr/skins.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
 obj/button.o: src/button.cpp hdr/button.hpp | obj

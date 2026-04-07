@@ -1,22 +1,30 @@
 #include "obstacle.hpp"
 
-Obstacle::Obstacle(float startY, float speed) {
-    mshape.setSize(sf::Vector2f(100.0f, 100.0f));
-    mVelocity = sf::Vector2f(speed, 0.0f);//move right by default
-
-    //start at the right edge of the window
-    mshape.setPosition(1.0f, startY);
+Obstacle::Obstacle() 
+{
+    
 }
 
-void Obstacle::update(float deltaTime) {
-    // Move the obstacle based on its velocity and the elapsed time
-    mshape.move(mVelocity * deltaTime);
+void Obstacle::update()
+{
+    
 }
 
-void Obstacle::render(sf::RenderWindow& window) {
-    window.draw(mshape);
+void Obstacle::render(sf::RenderWindow& window) 
+{
+    
 }
 
-sf::FloatRect Obstacle::getBounds() const {
-    return mshape.getGlobalBounds();
+
+bool Obstacle::checkIfInCharColumn()
+{   //check position of sprite row
+    if(mSprite.getPosition().x >= 600.0f && mSprite.getPosition().x <= 800.0f)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
+
