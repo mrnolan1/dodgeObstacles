@@ -9,15 +9,18 @@ class Obstacle {
     Obstacle();
     ~Obstacle() {};
     //dt is delta time, the time passed since the last frame. Helps move obstacle.
-    virtual void update() = 0;
+    virtual obsType update() = 0;
     virtual void render(sf::RenderWindow& window) = 0;
-    bool checkIfInCharColumn();
+    bool checkIfInCharColumn(); 
+    void setRow(int row);
+
 
     protected:
     float mSpeed;
     sf::Sprite mSprite;
     sf::Texture mTexture;
     int mRow;
+    bool mIsInUse
 };
 
 
