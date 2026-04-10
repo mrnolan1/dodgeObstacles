@@ -28,6 +28,7 @@ private:
     Button mSkin1Button;
     Button mSkin2Button;
     Button mSkin3Button;
+    sf::Sprite mCurrentSkin;
     sf::Sprite mSkin1;
     sf::Texture mSkin1Texture;
     sf::Sprite mSkin2;

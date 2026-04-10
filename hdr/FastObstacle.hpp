@@ -5,10 +5,9 @@
 class fastObstacle : public Obstacle 
 {
     public:
-    fastObstacle(int row);
+    fastObstacle();
     ~fastObstacle() {};
-
-    void update();
+    obsType update();
     void render(sf::RenderWindow& window);
 };
 

@@ -5,7 +5,7 @@ Obstacle::Obstacle()
     
 }
 
-void Obstacle::update()
+obsType Obstacle::update()
 {
     
 }
@@ -26,5 +26,10 @@ bool Obstacle::checkIfInCharColumn()
     {
         return false;
     }
+}
+
+void Obstacle::setRow(int row)
+{
+    mRow = row;
 }
 

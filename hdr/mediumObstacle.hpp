@@ -5,10 +5,10 @@
 class mediumObstacle : public Obstacle 
 {
     public:
-    mediumObstacle(int row);
+    mediumObstacle();
     ~mediumObstacle() {};
 
-    void update();
+    obsType update();
     void render(sf::RenderWindow& window);
 };
 
