@@ -35,6 +35,8 @@ Skins::Skins()
     mSkin2.setTexture(mSkin2Texture);
     mSkin3.setTexture(mSkin3Texture);
 
+    mCurrentSkin = mSkin1;
+
     mTitle.setFont(mFont);
     mTitle.setCharacterSize(40);
     mTitle.setString("Skins");
@@ -71,15 +73,15 @@ void Skins::handleInput(sf::Event& event,  sf::RenderWindow& mWindow, Character 
 {
     if (mSkin1Button.handleInput(event, mWindow))
     {
-        skin.setSkin("png/testCharacter");
+        skin.setSkin("../png/testCharacter");
     }
     else if (mSkin2Button.handleInput(event, mWindow))
     {
-        skin.setSkin("png/testCharacter");
+        skin.setSkin("../png/testCharacter");
     }
     else if (mSkin3Button.handleInput(event, mWindow))
     {
-        skin.setSkin("png/testCharacter");
+        skin.setSkin("../png/testCharacter");
     }
 
 }

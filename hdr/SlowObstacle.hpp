@@ -5,10 +5,10 @@
 class slowObstacle : public Obstacle 
 {
     public:
-    slowObstacle(int row);
+    slowObstacle();
     ~slowObstacle() {};
 
-    void update();
+    obsType update();
     void render(sf::RenderWindow& window);
 };
 
