@@ -26,6 +26,11 @@ Menu::Menu()
     }
     mBackground.setTexture(mBackgroundTexture);
 
+    mSecondBackground.setTexture(mBackgroundTexture);
+    mBackground.setPosition({0,0});
+    mSecondBackground.setPosition({-800, 0});
+
+
     mTitle.setFont(mFont);
     //choose the font size based on button size
     mTitle.setCharacterSize(60);
@@ -33,6 +38,9 @@ Menu::Menu()
     mTitle.setString("    Dodge\nObstacles!");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
     mTitle.setPosition({400,125});
+
+    mTitle.setFillColor({0,0,0,0});
+
     
     mPlay.setText("Play");
     mPlay.setPosition({400, 400});
@@ -61,6 +69,7 @@ Menu::Menu()
  * @param window 
  * @return State 
  */
+
 screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mPlay.handleInput(event, window)){
@@ -72,7 +81,9 @@ screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
     else if (mSkins.handleInput(event, window)){
         return skins;
     }
+
     return menu;
+
 }
 
 /**
@@ -86,6 +97,35 @@ void Menu::update()
     mSkins.update();
 }
 
+
+void Menu::moveBackground()
+{
+    if(mBackground.getPosition().x > 800)
+    {
+        mBackground.setPosition({-800,0});
+        mBackgroundCounter = -800;
+    }
+    else if(mSecondBackground.getPosition().x > 800)
+    {
+        mSecondBackground.setPosition({-800,0});
+        mBackgroundCounter2 = -800;
+    }
+    mBackgroundCounter = mBackgroundCounter + 0.5;
+    mBackgroundCounter2 = mBackgroundCounter2 + 0.5;
+    mBackground.setPosition({mBackgroundCounter, 0});
+    mSecondBackground.setPosition({mBackgroundCounter2, 0});
+}
+
+void Menu::fadeInText()
+{
+    if (mColorCounter < 255)
+    {
+        mColorCounter++;
+        mTitle.setFillColor({mColorCounter, mColorCounter, mColorCounter, mColorCounter});
+    }
+    std::cout << static_cast<int>(mColorCounter) << std::endl;
+}
+
 /**
  * @brief render each button
  * 
@@ -94,6 +134,8 @@ void Menu::update()
 void Menu::render(sf::RenderWindow& window)
 {
     window.draw(mBackground);
+
+
     window.draw(mTitle);
     window.draw(mPlay);
     window.draw(mControls);

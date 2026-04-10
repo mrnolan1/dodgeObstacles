@@ -1,42 +1,25 @@
-//this will be for the main file
 
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include "../hdr/game.hpp"
+/** 
+ * @file main.cpp 
+ * @author Matthew Nolan 
+ * @brief  This program testing class button 
+ * @date 2026-03-17 
+ */ 
+#include <SFML/Graphics.hpp> 
+#include <iostream> 
+#include "../hdr/game.hpp" 
 
-int main()
-{
-   sf::RenderWindow window(sf::VideoMode(800, 500), "Video Game");
-   Game videoGame(window);
-   
-    sf::Clock clock; 
+int main() 
+{ 
+    sf::RenderWindow window(sf::VideoMode(800, 500), "Game Test"); 
+    Game Game;
 
-    while(window.isOpen()) {
-        float dt = clock.restart().asSeconds();
-        videoGame.handleInput(window);
-        videoGame.update(dt, window);
-        videoGame.render(window);
-    }
+    //add dt later
+    while (window.isOpen()) { 
+        Game.handleInput(window); 
+        Game.update(); 
+        Game.render(window);
+    }  
 
     return 0;
 }
-
-// int main() {
-//    sf::RenderWindow window(sf::VideoMode(800, 500), "Video Game");
-//    Game videoGame(window);
-
-//     while(window.isOpen()) {
-//         sf::Event event;
-        
-//         while (window.pollEvent(event)) {
-//             if(event.type == sf::Event::Closed)
-//                 window.close();
-            
-//             videoGame.handleInput(event, window);
-//         }
-
-//         window.clear();
-//         videoGame.render(window);
-//         window.display();
-//     }
-// }

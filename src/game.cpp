@@ -7,7 +7,7 @@
 
 #include "../hdr/game.hpp"
 
-Game::Game(sf::RenderWindow& window) {
+Game::Game() {
     mScreenState = menu;
 }
 
@@ -17,13 +17,47 @@ void Game::handleInput(sf::RenderWindow& window) {
         if(event.type == sf::Event::Closed)
             window.close();
 
-        mScreenState = mMenu.handleInput(event, window);
+        switch(mScreenState) {
+            case menu: {
+                mScreenState = mMenuScreen.handleInput(event, window);
+                break;
+            }
+            case play: {
+                mScreenState = mPlayScreen.handleInput(event, window);
+                break;
+            }
+            //case howtoplay, and skins
+        }
     }
 }
 
-void Game::update(sf::RenderWindow& window, float dt) {
-
+void Game::update() {
+    switch(mScreenState) {
+        case menu: {
+            mMenuScreen.update();
+            break;
+        }
+        case play: {
+            mPlayScreen.update();
+            break;
+        }
+        //case howtoplay, and skins
+    }
 }
+
 void Game::render(sf::RenderWindow& window) {
-
+    window.clear();
+    switch (mScreenState) {
+        case menu: {
+            mMenuScreen.render(window);
+            break;
+        } 
+        case play: {
+            mPlayScreen.render(window);
+            break;
+        }
+        // case howtoplay: case skins:        
+        }
+    window.display();
 }
+

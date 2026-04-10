@@ -9,15 +9,17 @@
 #include <SFML/Graphics.hpp>
 #include "../hdr/obstacle.hpp"
 
-enum obsType {slowObs, medObs, fastObs};
-
 class Row {
 public:
     Row();
     ~Row() {};
+
+    void update();
+    void render();
+
     void setRow(int row);
-    obsType getObsType();
-    void setObsType(obsType curObsType);
+    obsType randomObsType();
+
 private:
     int mRowVal;
     obsType mObsType;

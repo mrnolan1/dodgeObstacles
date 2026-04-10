@@ -11,19 +11,19 @@
 #include <SFML/Graphics.hpp>
 #include "../hdr/character.hpp"
 #include "../hdr/row.hpp"
+#include "../hdr/menu.hpp"
 //#include "../hdr/obstacle.hpp"
 
 class Play {
 public:
-    Play(sf::RenderWindow& playWindow);
+    Play();
     ~Play() {};
-    void handleInput(sf::Event& event, sf::RenderWindow& window);
-
+    screenState handleInput(sf::Event& event, sf::RenderWindow& window);
+    void update();
+    void render(sf::RenderWindow& windwo);
 private:
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
-    sf::Sprite mBackground;
-    sf::Texture mTextureBackground;
     Row mRow[5];
 };

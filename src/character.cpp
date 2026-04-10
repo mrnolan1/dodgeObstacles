@@ -26,14 +26,25 @@ void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
             mRow++;
         else if (((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::Right)) && mRow > 0)
             mRow--;
-        mCharacter.setPosition(750, (100*mRow+50));
     }
+}
+
+void Character::update() {
+    mCharacter.setPosition(750, (100*mRow+50));
+}
+
+void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(mCharacter);
 }
 
 int Character::getRow() {
     return mRow;
 }
 
-void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(mCharacter);
+void Character::setSkin(std::string file)
+{
+    if(mTexture.loadFromFile(file))
+    {
+        std::cerr << "Error opening skin file" << std::endl;
+    }
 }
