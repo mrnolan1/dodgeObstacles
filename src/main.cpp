@@ -7,33 +7,19 @@
  */ 
 #include <SFML/Graphics.hpp> 
 #include <iostream> 
-#include "../hdr/menu.hpp" 
-#include "../hdr/button.hpp" 
-#include "../hdr/skins.hpp"
-#include "../hdr/character.hpp"
+#include "../hdr/game.hpp" 
 
 int main() 
 { 
-    sf::RenderWindow window(sf::VideoMode(800, 500), "Skins class test"); 
-    Skins SkinMenu; 
-    Character chara;
-    while (window.isOpen()) 
-   { 
-       sf::Event event; 
-       while (window.pollEvent(event)) 
-       { 
-           if (event.type == sf::Event::Closed) 
-           { 
-                window.close(); 
-           } 
-           SkinMenu.handleInput(event, window, chara); 
-           SkinMenu.update(); 
-       } 
-       window.clear(); 
-       SkinMenu.render(window); 
-       window.display(); 
+    sf::RenderWindow window(sf::VideoMode(800, 500), "Game Test"); 
+    Game Game;
 
-   } 
+    //add dt later
+    while (window.isOpen()) { 
+        Game.handleInput(window); 
+        Game.update(); 
+        Game.render(window);
+    }  
 
-   return 1;
-} 
+    return 0;
+}

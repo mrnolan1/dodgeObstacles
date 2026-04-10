@@ -74,7 +74,6 @@ screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mPlay.handleInput(event, window)){
         return play;
-
     }
     else if (mControls.handleInput(event, window)){
         return howtoplay;

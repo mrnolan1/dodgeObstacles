@@ -22,6 +22,9 @@ public:
     ~Character() {};
 
     void handleInput(sf::Event& event, sf::RenderWindow& window);
+    void update();
+    void render()    
+
     int getRow();
     void setSkin(std::string file);
 
@@ -30,6 +33,5 @@ private:
     int mRow;
     sf::Sprite mCharacter;
     sf::Texture mTexture;
-
 };
 

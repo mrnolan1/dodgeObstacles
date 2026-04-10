@@ -8,17 +8,36 @@
 #include "../hdr/row.hpp"
 
 Row::Row() {
-    mObsType = slowObs;
+    mObsType = noObs;
 }
 
 void Row::setRow(int row) {
     mRowVal = row;
+    mSlowObs.setRow(row);
+    mMedObs.setRow(row);
+    mFastObs.setRow(row);
 }
 
-obsType Row::getObsType() {
-    return mObsType;
+void Row::update() {
+    switch(mObsType) {
+        case noObs: {
+            mObsType = randomObstype();
+        }
+        case slowObs: {
+            mObsType = mSlowObs.update();
+            break;
+        }
+        case medObs: {
+            mObsType = mMedObs.update();
+            break;
+        }
+        case fastObs: {
+            mObsType = mFastObs.update();
+            break;
+        }
+    }
 }
 
-void Row::setObsType(obsType curObsType) {
+obsType Row::randomObsType() {
     mObsType = curObsType;
 }

@@ -11,16 +11,19 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../hdr/menu.hpp"
+#include "../hdr/play.hpp"
 
 class Game {
 public:
-    Game(sf::RenderWindow& window);
+    Game();
     ~Game() {};
     void handleInput(sf::RenderWindow& window);
-    void update(sf::RenderWindow& window, float dt);
-    void render();
+    void update();
+    void render(sf::RenderWindow& window);
 private:
-    Menu mMenu;
     screenState mScreenState;
+    Menu mMenuScreen;
+    Play mPlayScreen;
+    //howtoplay
+    //skins
 };
-
