@@ -1,3 +1,13 @@
+/**
+ * @file SlowObstacle.cpp
+ * @author Mathew & Justin
+ * @brief 
+ * @version 0.1
+ * @date 2026-04-10
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
 #include "../hdr/SlowObstacle.hpp"
 
 slowObstacle::slowObstacle(int row) 
