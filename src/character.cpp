@@ -1,13 +1,17 @@
 /**
  * @file character.cpp
  * @author Isaiah Preston
- * @brief Function definitions for Character class
- *          match).
+ * @brief Create a character controlled by the player. 
+ *          If the character and any obstacle ever overlaps, end the game.
  * @date 2026-04-02
  */
 
 #include "../hdr/character.hpp"
 
+/**
+ * @brief Construct a new Character::Character object
+ *          Load character texture, set size, set row to center
+ */
 Character::Character() {
     if (!mTexture.loadFromFile("png/testCharacter.png")) { //check if character image file can be opened
         std::cout<<"Error opening file\n";
@@ -15,36 +19,64 @@ Character::Character() {
     }
     mCharacter.setTexture(mTexture); //set sprite to character image
     sf::Vector2u characterSize{100, 100}; //set size of character
-    mCharacter.setOrigin(50, 50); //set origin of character to center
     mRow = 2; //starting row is center of screen
-    mCharacter.setPosition(750, (100*mRow+50)); //set position to given row in character column
 }
 
+/**
+ * @brief Hand input, arrows to move up and down, adjust row value
+ * 
+ * @param event 
+ * @param window 
+ */
 void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
     if (event.type == sf::Event::KeyPressed) {
-        if (((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::Left)) && mRow < 4)
+        if (((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::S)) && mRow < 4)
             mRow++;
-        else if (((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::Right)) && mRow > 0)
+        else if (((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::W)) && mRow > 0)
             mRow--;
     }
 }
 
+/**
+ * @brief Hand update (set position off of current row value)
+ */
 void Character::update() {
-    mCharacter.setPosition(750, (100*mRow+50));
+    mCharacter.setPosition(700, (100*mRow));
 }
 
+/**
+ * @brief Draw override (drawable)
+ * 
+ * @param target 
+ * @param states 
+ */
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
     target.draw(mCharacter);
 }
 
+/**
+ * @brief Return current row value of character
+ * 
+ * @return int 
+ */
 int Character::getRow() {
     return mRow;
 }
 
-void Character::setSkin(std::string file)
-{
+/**
+ * @brief Reposition character at center when a new game starts
+ */
+void Character::reset() {
+    mRow = 2;
+    mCharacter.setPosition(700, (100*mRow));
+}
+
+/**
+ * @brief Set character skin, error if file doesn't exist
+ * 
+ * @param file 
+ */
+void Character::setSkin(std::string file) {
     if(mTexture.loadFromFile(file))
-    {
         std::cerr << "Error opening skin file" << std::endl;
-    }
 }

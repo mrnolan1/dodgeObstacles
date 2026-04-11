@@ -1,40 +1,77 @@
 /**
  * @file play.cpp
- * @author Isaiah
- * @brief 
+ * @author Isaiah Preston
+ * @brief Play screen class. 
+ *          Create background, character, 
+ *          and rows (to hold obstacles)
  * @date 2026-04-04
  */
 
 #include "../hdr/play.hpp"
 
+/**
+ * @brief Construct a new Play::Play object
+ *          For each row, initialize its row value
+ *          Set background (error if not exist)
+ */
 Play::Play() {
     for(int i = 0; i < 5; i++)
         mRow[i].setRow(i);
 
-    if (!mBackgroundTexture.loadFromFile("assets/space.jpg")) { 
-        std::cout<<"Error opening file\n";
-        exit(1);
+    if (!mBackgroundTexture.loadFromFile("assets/space.jpg")) {
+        std::cout<<"Error opening background file\n";
+        exit(2);
     }
+
     mBackground.setTexture(mBackgroundTexture);
+    mBackground.setPosition({0,0});
 }
 
-screenState Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
+/**
+ * @brief Handle user input (character)
+ * 
+ * @param event 
+ * @param window 
+ */
+void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
     mCharacter.handleInput(event, window);
-    if(mRow[mCharacter.getRow()].getObs().checkIfInCharColumn())
+}
+
+/**
+ * @brief Update the screen (character and each row)
+ *          If character and any obstacle overlap, end game
+ * 
+ * @return screenState 
+ */
+screenState Play::update() {
+    mCharacter.update();
+    
+    for(int i = 0; i < 5; i++)
+        mRow[i].update();
+    
+    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
         return menu;
     else 
         return play;
 }
 
-void Play::update() {
-    mCharacter.update();
-    for(int i = 0; i < 5; i++) {
-        mRow[i].update();
-    }
-}
-
+/**
+ * @brief Render background, character, and all obstacles
+ * 
+ * @param window 
+ */
 void Play::render(sf::RenderWindow& window) {
+    window.draw(mBackground);
     window.draw(mCharacter);
     for(int i = 0; i < 5; i++) 
-        mRow[i].getObs().render(window);
+        mRow[i].render(window);
+}
+
+/**
+ * @brief Call reset functions when a new game starts on character and all obstacles
+ */
+void Play::reset() {
+    mCharacter.reset();
+    for(int i = 0; i < 5; i++) 
+        mRow[i].reset();
 }

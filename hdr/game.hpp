@@ -1,8 +1,7 @@
-
 /**
  * @file game.hpp
  * @author Isaiah Preston
- * @brief 
+ * @brief Game class, hold current screen state to call each screen (class)
  * @date 2026-04-07
  */
 
@@ -24,6 +23,6 @@ private:
     screenState mScreenState;
     Menu mMenuScreen;
     Play mPlayScreen;
-    //howtoplay
-    //skins
+    //Controls mControlsScreen;
+    //Skins mSkinsScreen;
 };

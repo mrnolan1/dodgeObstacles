@@ -1,42 +1,63 @@
-#include "../hdr/FastObstacle.hpp"
+/**
+ * @file fastObstacle.cpp
+ * @author Matthew, Justin
+ * @brief FastObstacle class, child of Obstacle
+ * @date 2026-04-11
+ */
 
-fastObstacle::fastObstacle() 
-{
-    mSpeed = 0.5f;
-    //create sprite w/ asteriod texture
-    if(!mTexture.loadFromFile("assets/discord-icon.png"))
-    {
+#include "../hdr/fastObstacle.hpp"
+
+/**
+ * @brief Construct a new fastObstacle::fastObstacle object
+ *          Create sprite with asteroid texture
+ *          Scale sprite to 50% of original size
+ *          Set initial position of sprite
+ */
+fastObstacle::fastObstacle() {
+    if(!mTexture.loadFromFile("assets/discord-icon.png")) {
         std::cout<<"Error opening file\n";
         exit(1);
     }
-    
-    mSprite.setTexture(mTexture);
-    mSprite.setScale(1.0f, 1.0f); //scale sprite to 50% of original size
-    mSprite.setPosition(800.0f, mRow * 100.0f); //set initial position of sprite
 
+    mSpeed = 0.5f;
+
+    mSprite.setTexture(mTexture);
+    mSprite.setScale(1.0f, 1.0f); 
+    mSprite.setPosition(800.0f, mRow * 100.0f); 
 }
 
-obsType fastObstacle::update()
-{
-    if(!mIsInUse)
-    {
+/**
+ * @brief Update: called if fastObs "picked" (in use)
+ *          If first call, set "inUse", position, and speed
+ *          Handle movement
+ *          If moved off screen, position, stop speed, not "inUse", return not "inUse"
+ * 
+ * @return obsType 
+ */
+obsType fastObstacle::update() {
+    if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({0, mRow*100});
+        mSprite.setPosition({0, mRow * 100.0f});
         mSpeed = 0.5f;
     }
-    mSprite.setPosition(mSprite.getPosition().x + mSpeed, mSprite.getPosition().y); //move sprite to the right
-    //check if sprite is off the screen
-    if(mSprite.getPosition().x > 800.0f)
-    {
-       mSprite.setPosition({800.0f, mRow * 100.0f}); //stop moving if off screen
+
+    mSprite.setPosition(mSprite.getPosition().x + mSpeed, mSprite.getPosition().y);
+
+    if(mSprite.getPosition().x > 800.0f) {
+       mSprite.setPosition({800.0f, mRow * 100.0f});
        mSpeed = 0.0f;
        mIsInUse = false;
        return noObs;
     }
+
     return fastObs;
 }
 
-void fastObstacle::render(sf::RenderWindow& window) 
-{
+/**
+ * @brief Draw sprite to the window
+ * 
+ * @param window 
+ */
+void fastObstacle::render(sf::RenderWindow& window) {
     window.draw(mSprite); //draw sprite to window
 }

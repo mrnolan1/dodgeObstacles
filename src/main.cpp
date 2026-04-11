@@ -1,8 +1,7 @@
-
 /** 
  * @file main.cpp 
  * @author Matthew Nolan 
- * @brief  This program testing class button 
+ * @brief Main: create a Game to call functions with created window
  * @date 2026-03-17 
  */ 
 #include <SFML/Graphics.hpp> 
