@@ -1,21 +1,19 @@
 /**
  * @file menu.hpp
  * @author Matthew Nolan
- * @brief  
- * @date 
+ * @brief Menu screen: display title, background, and buttons 
+ *          to switch to other screens (play, controls, skins)
+ * @date 2026-04-11
  */
 
+#pragma once
 
-#ifndef MENU_HPP
-#define MENU_HPP
 #include "button.hpp"
 #include <SFML/Graphics.hpp>
 
-enum screenState {menu, play, howtoplay, skins};
+enum screenState {menu, play, controls, skins};
 
-
-class Menu
-{
+class Menu {
 public:
     Menu();
 
@@ -35,11 +33,8 @@ private:
     sf::Texture mBackgroundTexture;
     float mBackgroundCounter = 0;
     float mBackgroundCounter2 = 800;
-    int mColorCounter = 0;
+    uint8_t mColorCounter = 0;
     Button mPlay; 
     Button mControls;
     Button mSkins;
 };
-
-#endif
-
