@@ -75,6 +75,7 @@ void Game::render(sf::RenderWindow& window) {
     switch (mScreenState) {
         case menu:
             mMenuScreen.render(window);
+            mMenuScreen.fadeInText();
             break;
         case play:
             mPlayScreen.render(window);
