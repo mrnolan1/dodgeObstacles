@@ -19,7 +19,7 @@ mediumObstacle::mediumObstacle() {
         exit(1);
     }
 
-    mSpeed = 0.3f;
+    mSpeed = 0.2f;
     
     mSprite.setTexture(mTexture);
     mSprite.setScale(1.0f, 1.0f);
@@ -38,8 +38,8 @@ obsType mediumObstacle::update()
 {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({0, mRow * 100.0f});
-        mSpeed = 0.3f;
+        mSprite.setPosition({-100, mRow * 100.0f});
+        mSpeed = 0.2f;
     }
 
     mSprite.setPosition(mSprite.getPosition().x + mSpeed, mSprite.getPosition().y);

@@ -113,7 +113,6 @@ void Menu::fadeInText() {
         mColorCounter++;
         mTitle.setFillColor({mColorCounter, mColorCounter, mColorCounter, mColorCounter});
     }
-    std::cout << static_cast<int>(mColorCounter) << std::endl;
 }
 
 /**
@@ -128,4 +127,5 @@ void Menu::render(sf::RenderWindow& window) {
     window.draw(mPlay);
     window.draw(mControls);
     window.draw(mSkins);
+    moveBackground();
 }
