@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include "../hdr/menu.hpp"
 #include "../hdr/play.hpp"
+#include "../hdr/skins.hpp"
 
 class Game {
 public:
@@ -24,5 +25,5 @@ private:
     Menu mMenuScreen;
     Play mPlayScreen;
     //Controls mControlsScreen;
-    //Skins mSkinsScreen;
+    Skins mSkinsScreen;
 };

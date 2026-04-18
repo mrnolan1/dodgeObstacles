@@ -38,9 +38,9 @@ void Game::handleInput(sf::RenderWindow& window) {
             // case controls:
             //     mScreenState = mControlsScreen;
             //     break;
-            // case skins:
-            //     mScreenState = mSkinsScreen;
-            //     break;
+            case skins:
+                mScreenState = mSkinsScreen.handleInput(event, window);
+                break;
         }
     }
 }
@@ -59,9 +59,10 @@ void Game::update(double dt) {
         // case controls:
         //     mControlsScreen.update();
         //     break;
-        // case skins:
-        //     mSkinsScreen.update();
-        //     break;
+        case skins:
+            mPlayScreen.setPlayerSkin(mSkinsScreen.getSkinType());
+            mSkinsScreen.update();
+            break;
     }
 }
 
@@ -83,9 +84,9 @@ void Game::render(sf::RenderWindow& window) {
         // case controls:
         //     mControlsScreen.render(window);
         //     break;
-        // case skins:
-        //     mSkinsScreen.render(window);
-        //     break;
+        case skins:
+            mSkinsScreen.render(window);
+            break;
     }
     window.display();
 }
