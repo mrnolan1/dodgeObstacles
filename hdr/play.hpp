@@ -20,6 +20,7 @@ public:
     Play();
     ~Play() {};
     
+    void setPlayerSkin(std::string file);
     void handleInput(sf::Event& event, sf::RenderWindow& window);
     screenState update(double dt);
     void render(sf::RenderWindow& window);

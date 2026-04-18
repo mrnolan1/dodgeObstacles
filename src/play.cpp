@@ -27,6 +27,11 @@ Play::Play() {
     mBackground.setPosition({0,0});
 }
 
+void Play::setPlayerSkin(std::string file)
+{
+    mCharacter.setSkin(file);
+}
+
 /**
  * @brief Handle user input (character)
  * 

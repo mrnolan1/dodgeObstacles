@@ -13,14 +13,17 @@
 
 #include "button.hpp"
 #include "menu.hpp"
-#include "character.hpp"
+#include "play.hpp"
 #include <SFML/Graphics.hpp>
+
+
 
 class Skins
 {
 public:
     Skins();
-    void handleInput(sf::Event& event,  sf::RenderWindow& mWindow, Character &skin);
+    screenState handleInput(sf::Event& event,  sf::RenderWindow& mWindow);
+    std::string getSkinType();
     void update();
     void render(sf::RenderWindow& window);
 
@@ -36,10 +39,15 @@ private:
     sf::Sprite mSkin3;
     sf::Texture mSkin3Texture;
 
+    Button mExitButton;
+
     sf::Text mTitle;
+    sf::Text mCurrentSkinText;
     sf::Font mFont;
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
+
+    std::string mSkinType;
 
 };
 
