@@ -22,7 +22,7 @@ class Obstacle {
     sf::Sprite mSprite;
     sf::Texture mTexture;
     int mRow;
-    bool mIsInUse
+    bool mIsInUse;
 };
 
 

@@ -23,7 +23,7 @@ public:
 
     void handleInput(sf::Event& event, sf::RenderWindow& window);
     void update();
-    void render()    
+    void render()
 
     int getRow();
     void setSkin(std::string file);
