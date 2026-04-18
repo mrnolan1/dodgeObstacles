@@ -19,22 +19,22 @@ Row::Row() {
  * @brief Handle updating the "active" obstacle of this row
  *          If none, randomly chose if a new obs is created
  */
-void Row::update() {
+void Row::update(double dt) {
     switch(mObsType) {
         case noObs: {
             mObsType = randomObsType();
             break;
         }
         case slowObs: {
-            mObsType = mSlowObs.update();
+            mObsType = mSlowObs.update(dt);
             break;
         }
         case medObs: {
-            mObsType = mMedObs.update();
+            mObsType = mMedObs.update(dt);
             break;
         }
         case fastObs: {
-            mObsType = mFastObs.update();
+            mObsType = mFastObs.update(dt);
             break;
         }
     }

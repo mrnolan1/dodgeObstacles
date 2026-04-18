@@ -13,10 +13,13 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 500), "Game Test"); 
     Game Game;
 
+    sf::Clock clock;
+
     //add dt later
     while (window.isOpen()) { 
+        double dt = clock.restart().asSeconds();
         Game.handleInput(window); 
-        Game.update(); 
+        Game.update(dt); 
         Game.render(window);
     }  
 

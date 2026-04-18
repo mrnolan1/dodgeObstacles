@@ -17,7 +17,7 @@ public:
     Obstacle() {};
     ~Obstacle() {};
 
-    virtual obsType update() = 0;
+    virtual obsType update(double dt) = 0;
     virtual void render(sf::RenderWindow& window) = 0;
 
     bool checkIfInCharColumn(); 

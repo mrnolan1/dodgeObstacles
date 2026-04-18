@@ -48,13 +48,13 @@ void Game::handleInput(sf::RenderWindow& window) {
 /**
  * @brief Update the screen based on the current screen state
  */
-void Game::update() {
+void Game::update(double dt) {
     switch(mScreenState) {
         case menu:
             mMenuScreen.update();
             break;
         case play:
-            mScreenState = mPlayScreen.update();
+            mScreenState = mPlayScreen.update(dt);
             break;
         // case controls:
         //     mControlsScreen.update();

@@ -43,11 +43,11 @@ void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
  * 
  * @return screenState 
  */
-screenState Play::update() {
+screenState Play::update(double dt) {
     mCharacter.update();
     
     for(int i = 0; i < 5; i++)
-        mRow[i].update();
+        mRow[i].update(dt);
     
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
         return menu;

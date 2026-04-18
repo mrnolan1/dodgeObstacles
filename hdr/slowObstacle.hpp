@@ -14,6 +14,6 @@ class slowObstacle : public Obstacle {
     slowObstacle();
     ~slowObstacle() {};
 
-    obsType update();
+    obsType update(double dt);
     void render(sf::RenderWindow& window);
 };

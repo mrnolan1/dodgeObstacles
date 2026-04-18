@@ -34,14 +34,14 @@ fastObstacle::fastObstacle() {
  * 
  * @return obsType 
  */
-obsType fastObstacle::update() {
+obsType fastObstacle::update(double dt) {
     if(!mIsInUse) {
         mIsInUse = true;
         mSprite.setPosition({-100, mRow * 100.0f});
         mSpeed = 0.3f;
     }
 
-    mSprite.setPosition(mSprite.getPosition().x + mSpeed, mSprite.getPosition().y);
+    mSprite.setPosition(mSprite.getPosition().x + mSpeed*dt*5000, mSprite.getPosition().y);
 
     if(mSprite.getPosition().x > 800.0f) {
        mSprite.setPosition({800.0f, mRow * 100.0f});

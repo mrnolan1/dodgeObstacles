@@ -17,7 +17,7 @@ public:
     Game();
     ~Game() {};
     void handleInput(sf::RenderWindow& window);
-    void update();
+    void update(double dt);
     void render(sf::RenderWindow& window);
 private:
     screenState mScreenState;

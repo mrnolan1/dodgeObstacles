@@ -40,6 +40,11 @@
 # debug information files
 *.dwo
 
-.vscode/
 
-a.out
+
+.vscode/
+exe/
+obj/
+*.o
+*.out
+*.exe
