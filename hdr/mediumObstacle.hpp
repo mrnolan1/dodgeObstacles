@@ -14,6 +14,6 @@ public:
     mediumObstacle();
     ~mediumObstacle() {};
 
-    obsType update();
+    obsType update(double dt);
     void render(sf::RenderWindow& window);
 };

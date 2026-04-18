@@ -21,7 +21,7 @@ public:
     ~Play() {};
     
     void handleInput(sf::Event& event, sf::RenderWindow& window);
-    screenState update();
+    screenState update(double dt);
     void render(sf::RenderWindow& window);
 
     void reset();

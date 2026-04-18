@@ -13,6 +13,6 @@ class fastObstacle : public Obstacle {
 public:
     fastObstacle();
     ~fastObstacle() {};
-    obsType update();
+    obsType update(double dt);
     void render(sf::RenderWindow& window);
 };

@@ -17,7 +17,7 @@ public:
     Row();
     ~Row() {};
 
-    void update();
+    void update(double dt);
     void render(sf::RenderWindow& window);
 
     void setRow(int row);
