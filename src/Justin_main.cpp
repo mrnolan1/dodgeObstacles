@@ -4,11 +4,12 @@
 #include "../hdr/mediumObstacle.hpp"
 #include "../hdr/FastObstacle.hpp"
 
+
 sf::RenderWindow window(sf::VideoMode(800, 500), "obstacle test");
 slowObstacle obstacle(0);
 mediumObstacle obstacle2(2);
 fastObstacle obstacle3(4);
-int Justin_main()
+int main()
 {
 while(window.isOpen())
 {
@@ -29,4 +30,5 @@ while(window.isOpen())
     obstacle3.render(window);
     window.display();
 }
+return 0;
 }
