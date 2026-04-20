@@ -25,6 +25,7 @@ Play::Play() {
 
     mBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0,0});
+    mBackground.setScale(800/(mBackground.getGlobalBounds().width), 500/(mBackground.getGlobalBounds().height));
 }
 
 void Play::setPlayerSkin(std::string file)
@@ -54,8 +55,10 @@ screenState Play::update(double dt) {
     for(int i = 0; i < 5; i++)
         mRow[i].update(dt);
     
-    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
+    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
+        std::cout << "GAME OVER\n";
         return menu;
+    }
     else 
         return play;
 }

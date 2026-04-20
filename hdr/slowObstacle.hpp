@@ -10,10 +10,13 @@
 #include "obstacle.hpp"
 
 class slowObstacle : public Obstacle {
-    public:
+public:
     slowObstacle();
     ~slowObstacle() {};
 
     obsType update(double dt);
     void render(sf::RenderWindow& window);
+
+private:
+    float mSlowSpeed = 500.0f;
 };

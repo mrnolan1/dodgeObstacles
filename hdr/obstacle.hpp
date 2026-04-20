@@ -25,9 +25,10 @@ public:
     void reset();
 
 protected:
-    float mSpeed;
+    float mCurSpeed;
+
     sf::Sprite mSprite;
     sf::Texture mTexture;
     int mRow;
-    bool mIsInUse;
+    bool mIsInUse = false;
 };

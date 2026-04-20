@@ -18,8 +18,8 @@ public:
     Menu();
 
     screenState handleInput(sf::Event& event, sf::RenderWindow& mWindow);
-    void update();
-    void moveBackground();
+    void update(double dt);
+    void moveBackground(double dt);
     void fadeInText();
 
     void render(sf::RenderWindow& window);
@@ -32,7 +32,7 @@ private:
     sf::Sprite mSecondBackground;
     sf::Texture mBackgroundTexture;
     float mBackgroundCounter = 0;
-    float mBackgroundCounter2 = 800;
+    float mBackgroundCounter2 = -800;
     uint8_t mColorCounter = 0;
     Button mPlay; 
     Button mControls;
