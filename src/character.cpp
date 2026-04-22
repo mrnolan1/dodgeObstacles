@@ -18,7 +18,7 @@ Character::Character() {
         exit(1);
     }
     mCharacter.setTexture(mTexture); //set sprite to character image
-    mCharacter.setScale(66.7/100, 66.7/100);
+    mCharacter.setScale(80.f/100, 80.f/100);
     mRow = 4; //starting row is center of screen
 }
 
@@ -41,7 +41,7 @@ void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
  * @brief Hand update (set position off of current row value)
  */
 void Character::update() {
-    mCharacter.setPosition(1133.3, (66.7*mRow));
+    mCharacter.setPosition(1200, (80*mRow));
 }
 
 /**
@@ -68,7 +68,6 @@ int Character::getRow() {
  */
 void Character::reset() {
     mRow = 4;
-    mCharacter.setPosition(1133.3, (66.7*mRow));
 }
 
 /**

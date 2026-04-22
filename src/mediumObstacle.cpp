@@ -22,8 +22,8 @@ mediumObstacle::mediumObstacle() {
     mCurSpeed = mMedSpeed;
     
     mSprite.setTexture(mTexture);
-    mSprite.setScale(66.7/100, 66.7/100);
-    mSprite.setPosition(1200.0f, mRow * 66.7f);
+    mSprite.setScale(80.f/100, 80.f/100);
+    mSprite.setPosition(1280.f, mRow * 80.f);
 }
 
 /**
@@ -38,14 +38,14 @@ obsType mediumObstacle::update(double dt)
 {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({-66.7f, mRow * 66.7f});
+        mSprite.setPosition({-80.f, mRow * 80.f});
         mCurSpeed = mMedSpeed;
     }
 
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y);
 
-    if(mSprite.getPosition().x > 1200.0f) {
-        mSprite.setPosition({1200.0f, mRow * 66.7f});
+    if(mSprite.getPosition().x > 1280.f) {
+        mSprite.setPosition({1280.f, mRow * 80.f});
         mCurSpeed = 0.0f;
         mIsInUse = false;
         return noObs;

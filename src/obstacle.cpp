@@ -17,7 +17,7 @@
  * @return false 
  */
 bool Obstacle::checkIfInCharColumn() { 
-    if(1100.0f < mSprite.getPosition().x && mSprite.getPosition().x < 1166.7f)
+    if(1140.f < mSprite.getPosition().x && mSprite.getPosition().x < 1260.f)
         return true;
     else 
         return false;
@@ -37,6 +37,6 @@ void Obstacle::setRow(int row) {
  * 
  */
 void Obstacle::reset() {
-    mSprite.setPosition(1200.0f, mRow * 66.7f);
+    mSprite.setPosition(1280.f, mRow * 80.f);
 }
 
