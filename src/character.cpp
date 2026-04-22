@@ -18,8 +18,8 @@ Character::Character() {
         exit(1);
     }
     mCharacter.setTexture(mTexture); //set sprite to character image
-    sf::Vector2u characterSize{100, 100}; //set size of character
-    mRow = 2; //starting row is center of screen
+    mCharacter.setScale(80.f/100, 80.f/100);
+    mRow = 4; //starting row is center of screen
 }
 
 /**
@@ -30,7 +30,7 @@ Character::Character() {
  */
 void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
     if (event.type == sf::Event::KeyPressed) {
-        if (((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::S)) && mRow < 4)
+        if (((event.key.code == sf::Keyboard::Down) || (event.key.code == sf::Keyboard::S)) && mRow < 8)
             mRow++;
         else if (((event.key.code == sf::Keyboard::Up) || (event.key.code == sf::Keyboard::W)) && mRow > 0)
             mRow--;
@@ -41,7 +41,7 @@ void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
  * @brief Hand update (set position off of current row value)
  */
 void Character::update() {
-    mCharacter.setPosition(700, (100*mRow));
+    mCharacter.setPosition(1200, (80*mRow));
 }
 
 /**
@@ -67,8 +67,7 @@ int Character::getRow() {
  * @brief Reposition character at center when a new game starts
  */
 void Character::reset() {
-    mRow = 2;
-    mCharacter.setPosition(700, (100*mRow));
+    mRow = 4;
 }
 
 /**

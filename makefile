@@ -5,7 +5,7 @@
 # I have included all headers for "test.cpp" and "main.cpp".
 # If those later don't require all headers, adjust accordingly.
 
-CC = g++ 
+CC = g++
 FLAGS = -Wall -Wno-deprecated-declarations -std=c++17 -pedantic-errors -I/opt/homebrew/include
 LDFLAGS = -L/opt/homebrew/lib -lsfml-graphics -lsfml-window -lsfml-system
 

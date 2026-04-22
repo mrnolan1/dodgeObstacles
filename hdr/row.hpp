@@ -21,7 +21,7 @@ public:
     void render(sf::RenderWindow& window);
 
     void setRow(int row);
-    obsType randomObsType();
+    obsType randomObsType(double dt);
     bool eachCheckIfInCharColumn();
     void reset();
 
