@@ -18,13 +18,15 @@ Play::Play() {
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
-    if (!mBackgroundTexture.loadFromFile("assets/space.jpg")) {
+    if (!mBackgroundTexture.loadFromFile("assets/spacebackgroundsmaller.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
 
     mBackground.setTexture(mBackgroundTexture);
-    mBackground.setPosition({0,0});
+    mBackground.setOrigin({250, 125});
+    mBackground.setPosition({400, 200});
+    mBackground.setScale({2.5, 2.5});
 }
 
 void Play::setPlayerSkin(std::string file)
