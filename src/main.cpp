@@ -1,39 +1,27 @@
-
 /** 
  * @file main.cpp 
  * @author Matthew Nolan 
- * @brief  This program testing class button 
+ * @brief Main: create a Game to call functions with created window
  * @date 2026-03-17 
  */ 
 #include <SFML/Graphics.hpp> 
 #include <iostream> 
-#include "../hdr/menu.hpp" 
-#include "../hdr/button.hpp" 
-#include "../hdr/skins.hpp"
-#include "../hdr/character.hpp"
+#include "../hdr/game.hpp" 
 
 int main() 
 { 
-    sf::RenderWindow window(sf::VideoMode(800, 500), "Skins class test"); 
-    Skins SkinMenu; 
-    Character chara;
-    while (window.isOpen()) 
-   { 
-       sf::Event event; 
-       while (window.pollEvent(event)) 
-       { 
-           if (event.type == sf::Event::Closed) 
-           { 
-                window.close(); 
-           } 
-           SkinMenu.handleInput(event, window, chara); 
-           SkinMenu.update(); 
-       } 
-       window.clear(); 
-       SkinMenu.render(window); 
-       window.display(); 
+    sf::RenderWindow window(sf::VideoMode(800, 500), "Game Test"); 
+    Game Game;
 
-   } 
+    sf::Clock clock;
 
-   return 1;
-} 
+    //add dt later
+    while (window.isOpen()) { 
+        double dt = clock.restart().asSeconds();
+        Game.handleInput(window); 
+        Game.update(dt); 
+        Game.render(window);
+    }  
+
+    return 0;
+}

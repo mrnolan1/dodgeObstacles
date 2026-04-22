@@ -1,8 +1,7 @@
-
 /**
  * @file game.hpp
  * @author Isaiah Preston
- * @brief 
+ * @brief Game class, hold current screen state to call each screen (class)
  * @date 2026-04-07
  */
 
@@ -11,16 +10,21 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../hdr/menu.hpp"
+#include "../hdr/play.hpp"
+#include "../hdr/skins.hpp"
+#include "../hdr/controls.hpp"
 
 class Game {
 public:
-    Game(sf::RenderWindow& window);
+    Game();
     ~Game() {};
     void handleInput(sf::RenderWindow& window);
-    void update(sf::RenderWindow& window, float dt);
-    void render();
+    void update(double dt);
+    void render(sf::RenderWindow& window);
 private:
-    Menu mMenu;
     screenState mScreenState;
+    Menu mMenuScreen;
+    Play mPlayScreen;
+    Controls mControlsScreen;
+    Skins mSkinsScreen;
 };
-

@@ -1,7 +1,9 @@
 /**
  * @file play.hpp
  * @author Isaiah Preston
- * @brief 
+ * @brief Play screen class. 
+ *          Create background, character, 
+ *          and rows (to hold obstacles)
  * @date 2026-04-04
  */
 
@@ -11,18 +13,23 @@
 #include <SFML/Graphics.hpp>
 #include "../hdr/character.hpp"
 #include "../hdr/row.hpp"
-//#include "../hdr/obstacle.hpp"
+#include "../hdr/menu.hpp"
 
 class Play {
 public:
-    Play(sf::RenderWindow& playWindow);
+    Play();
     ~Play() {};
+    
+    void setPlayerSkin(std::string file);
     void handleInput(sf::Event& event, sf::RenderWindow& window);
+    screenState update(double dt);
+    void render(sf::RenderWindow& window);
+
+    void reset();
 
 private:
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
-    sf::Texture mTextureBackground;
     Row mRow[5];
 };

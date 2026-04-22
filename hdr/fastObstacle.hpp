@@ -1,7 +1,7 @@
 /**
- * @file mediumObstacle.hpp
+ * @file fastObstacle.hpp
  * @author Matthew, Justin
- * @brief MediumObstacle class, child of Obstacle
+ * @brief FastObstacle class, child of Obstacle
  * @date 2026-04-11
  */
 
@@ -9,11 +9,10 @@
 
 #include "obstacle.hpp"
 
-class mediumObstacle : public Obstacle {
+class fastObstacle : public Obstacle {
 public:
-    mediumObstacle();
-    ~mediumObstacle() {};
-
+    fastObstacle();
+    ~fastObstacle() {};
     obsType update(double dt);
     void render(sf::RenderWindow& window);
 };

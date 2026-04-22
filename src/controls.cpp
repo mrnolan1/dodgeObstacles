@@ -10,13 +10,13 @@
  */
 #include "../hdr/menu.hpp"
 #include "../hdr/button.hpp"
-#include "../hdr/howtoplay.hpp"
+#include "../hdr/controls.hpp"
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
 //this will be for the play class(its own seperate functions for handling inputs, rendering, and updating screen for the how to play screen)
-HowToPlay::HowToPlay() {
+Controls::Controls() {
 
     //initialize variables and load resources here
     if (!mFont.loadFromFile("assets/SPACE.ttf"))
@@ -44,43 +44,42 @@ HowToPlay::HowToPlay() {
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
     mTitle.setPosition({400,125});
 
-    mTitle.setFillColor({0,0,0,0});
-
     //mInstructions.setTextSize();//in progress
-    mInstructions.setText("Objective: Avoid Asteroids, Spaceships and Blackholes\n");
-    mInstructions.setText("How to move Character: Press left arrow key to move down.\n Press right arrow key to move up.\n");
+    mInstructions.setFont(mFont);
+    mInstructions.setCharacterSize(20);
+    mInstructions.setString("Objective: Avoid Asteroids, Spaceships and Blackholes\n");
+    //mInstructions.setOrigin(mInstructions.getGlobalBounds().width/2, mInstructions.getGlobalBounds().height/2);
+    mInstructions.setPosition({300, 250});
+    mInstructions2.setString("How to move Character: Press w to move up, and press s to move down, and space bar to start the game.\n");
     //mInstructions.setSize();//in progress
 
+    
     mMenu.setText("Back to Menu");
+    
     mMenu.setPosition({400, 400});
     mMenu.setSize({240, 100});
     mMenu.setColorTextNormal(sf::Color::White);
     mMenu.setTextPosition({465,400});
 
 
-    // std::cout << "How to Play" << std::endl;
-    // std::cout << "Use the left arrow key to move down and right arrow key to move up."<<std::endl;
-    // std::cout << "Avoid the obstacles." << std::endl;
-
 }
 
-screenState HowToPlay::handleInput(sf::Event& event, sf::RenderWindow& window)
+screenState Controls::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mMenu.handleInput(event, window)){
         return menu;
-
     }
 
-    return howtoplay;
+    return controls;
 }
 
 
-void HowToPlay::update() {
+void Controls::update() {
     //update the how to play screen here
     mMenu.update();
 }
 
-void HowToPlay::moveBackground()
+void Controls::moveBackground()
 {
     if(mBackground.getPosition().x > 800)
     {
@@ -98,10 +97,12 @@ void HowToPlay::moveBackground()
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
 }
 
-void HowToPlay::render(sf::RenderWindow& window) {
+void Controls::render(sf::RenderWindow& window) {
     window.draw(mBackground);
     window.draw(mSecondBackground);
     window.draw(mTitle);
     window.draw(mMenu);
+    window.draw(mInstructions);
+    window.draw(mInstructions2);
 }
 
