@@ -13,7 +13,7 @@
  *          Load character texture, set size, set row to center
  */
 Character::Character() {
-    if (!mTexture.loadFromFile("png/testCharacter.png")) { //check if character image file can be opened
+    if (!mTexture.loadFromFile("assets/astronaut.png")) { //check if character image file can be opened
         std::cout<<"Error opening file\n";
         exit(1);
     }

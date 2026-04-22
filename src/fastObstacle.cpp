@@ -14,7 +14,7 @@
  *          Set initial position of sprite
  */
 fastObstacle::fastObstacle() {
-    if(!mTexture.loadFromFile("assets/discord-icon.png")) {
+    if(!mTexture.loadFromFile("assets/ufo.png")) {
         std::cout<<"Error opening file\n";
         exit(1);
     }

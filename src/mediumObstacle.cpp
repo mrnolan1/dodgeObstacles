@@ -14,7 +14,7 @@
  *          Set initial position of sprite
  */
 mediumObstacle::mediumObstacle() {
-    if(!mTexture.loadFromFile("assets/discord-icon.png")) {
+    if(!mTexture.loadFromFile("assets/spaceship.png")) {
         std::cout<<"Error opening file\n";
         exit(1);
     }
