@@ -32,7 +32,7 @@ private:
     sf::Sprite mSecondBackground;
     sf::Texture mBackgroundTexture;
     float mBackgroundCounter = 0;
-    float mBackgroundCounter2 = -1200;
+    float mBackgroundCounter2 = -1280;
     uint8_t mColorCounter = 0;
     Button mPlay; 
     Button mControls;

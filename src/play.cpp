@@ -25,7 +25,6 @@ Play::Play() {
 
     mBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0,0});
-    mBackground.setScale(1200/(mBackground.getGlobalBounds().width), 600/(mBackground.getGlobalBounds().height));
 }
 
 void Play::setPlayerSkin(std::string file)
