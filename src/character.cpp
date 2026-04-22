@@ -76,6 +76,6 @@ void Character::reset() {
  * @param file 
  */
 void Character::setSkin(std::string file) {
-    if(mTexture.loadFromFile(file))
+    if(!mTexture.loadFromFile(file))
         std::cerr << "Error opening skin file" << std::endl;
 }

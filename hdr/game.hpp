@@ -19,7 +19,7 @@ public:
     ~Game() {};
     void handleInput(sf::RenderWindow& window);
     void update(double dt);
-    void render(sf::RenderWindow& window);
+    void render(sf::RenderWindow& window, double dt);
 private:
     screenState mScreenState;
     Menu mMenuScreen;

@@ -23,7 +23,7 @@ slowObstacle::slowObstacle() {
 
     mSprite.setTexture(mTexture);
     mSprite.setScale(80.f/100, 80.f/100);
-    mSprite.setPosition(1280.f, mRow * 80.f);
+    mSprite.setPosition(1320.f, mRow * 80.f * 40.f);
     mSprite.setOrigin({50,50});
 }
 
@@ -38,15 +38,15 @@ slowObstacle::slowObstacle() {
 obsType slowObstacle::update(double dt) {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({-80.f, mRow * 80.f});
+        mSprite.setPosition({-40.f, mRow * 80.f + 40.f});
         mCurSpeed = mSlowSpeed;
     }
    
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y); 
-    mSprite.setRotation(mSprite.getRotation()+mCurSpeed*dt);
+    mSprite.setRotation(mSprite.getRotation()+250.f*dt);
     
-    if(mSprite.getPosition().x > 1280.f) {
-        mSprite.setPosition({1280.f, mRow * 80.f}); 
+    if(mSprite.getPosition().x > 1320.f) {
+        mSprite.setPosition({1320.f, mRow * 80.f + 40.f}); 
         mCurSpeed = 0.0f; 
         mIsInUse = false; 
         return noObs;
