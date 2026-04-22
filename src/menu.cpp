@@ -36,8 +36,8 @@ Menu::Menu() {
     mSecondBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({mBackgroundCounter,0});
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
-    mBackground.setScale(800/(mBackground.getGlobalBounds().width), 500/(mBackground.getGlobalBounds().height));
-    mSecondBackground.setScale(800/(mSecondBackground.getGlobalBounds().width), 500/(mSecondBackground.getGlobalBounds().height));
+    mBackground.setScale(1200/(mBackground.getGlobalBounds().width), 600/(mBackground.getGlobalBounds().height));
+    mSecondBackground.setScale(1200/(mSecondBackground.getGlobalBounds().width), 600/(mSecondBackground.getGlobalBounds().height));
 
     mPlay.setText("Play");
     mPlay.setPosition({400, 400});
@@ -95,10 +95,10 @@ void Menu::update(double dt) {
  * @brief Move background (flying through space)
  */
 void Menu::moveBackground(double dt) {
-    if(mBackgroundCounter > 800) {
-        mBackgroundCounter = -800;
-    } else if(mBackgroundCounter2 > 800) {
-        mBackgroundCounter2 = -800;
+    if(mBackgroundCounter > 1200) {
+        mBackgroundCounter = -1200;
+    } else if(mBackgroundCounter2 > 1200) {
+        mBackgroundCounter2 = -1200;
     }
 
     mBackgroundCounter += 500*dt;

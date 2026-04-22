@@ -46,9 +46,13 @@ void Row::update(double dt) {
  * @param window 
  */
 void Row::render(sf::RenderWindow& window) {
+    std::cout << "Start render\n";
     mSlowObs.render(window);
+    std::cout << "Render between slow and med\n";
     mMedObs.render(window);
+    std::cout << "Render between med and fast\n";
     mFastObs.render(window);
+    std::cout << "End render\n";
 }
 
 /**
@@ -71,7 +75,7 @@ void Row::setRow(int row) {
 obsType Row::randomObsType(double dt) {
     static std::random_device rd;                   // a seed source for the random number engine
     static std::mt19937 gen(rd());                  // mersenne_twister_engine seeded with rd()
-    std::uniform_int_distribution<> dist(1, 100000000*dt); // Use distrib to transform the random unsigned int
+    std::uniform_int_distribution<> dist(1, 1/dt); // Use distrib to transform the random unsigned int
     
     if(dist(gen) == 1)
         return slowObs; 

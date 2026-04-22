@@ -18,5 +18,5 @@ public:
     void render(sf::RenderWindow& window);
 
 private:
-    float mSlowSpeed = 500.0f;
+    float mSlowSpeed = 750.0f;
 };
