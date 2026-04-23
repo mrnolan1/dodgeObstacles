@@ -42,24 +42,27 @@ Controls::Controls() {
     //set label
     mTitle.setString("    How to Play\n");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({400,125});
+    mTitle.setPosition({350,125});
 
     //mInstructions.setTextSize();//in progress
     mInstructions.setFont(mFont);
-    mInstructions.setCharacterSize(20);
+    mInstructions.setCharacterSize(15);
     mInstructions.setString("Objective: Avoid Asteroids, Spaceships and Blackholes\n");
     //mInstructions.setOrigin(mInstructions.getGlobalBounds().width/2, mInstructions.getGlobalBounds().height/2);
-    mInstructions.setPosition({300, 250});
-    mInstructions2.setString("How to move Character: Press w to move up, and press s to move down, and space bar to start the game.\n");
+    mInstructions.setPosition({50, 250});
+    mInstructions2.setString("          How to move Character:\n              Press w to move up \n            press s to move down, \n Press space bar to start the game.\n");
+    mInstructions2.setFont(mFont);
+    mInstructions2.setCharacterSize(15);
+    mInstructions2.setPosition({170, 280});
     //mInstructions.setSize();//in progress
 
     
-    mMenu.setText("Back to Menu");
-    
-    mMenu.setPosition({400, 400});
+    mMenu.setText("Menu");
+    //mMenu.setTextSize(1);
+    mMenu.setPosition({405, 450});
     mMenu.setSize({240, 100});
     mMenu.setColorTextNormal(sf::Color::White);
-    mMenu.setTextPosition({465,400});
+    mMenu.setTextPosition({475,450});
 
 
 }
