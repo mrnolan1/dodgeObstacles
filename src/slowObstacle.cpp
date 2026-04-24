@@ -14,16 +14,17 @@
  *          Set initial position of sprite
  */
 slowObstacle::slowObstacle() {
-    if(!mTexture.loadFromFile("assets/discord-icon.png")) {
+    if(!mTexture.loadFromFile("assets/asteroid.png")) {
         std::cerr << "Error opening file\n";
         exit(1);
     }
 
-    mSpeed = 0.1f;
+    mCurSpeed = mSlowSpeed;
 
     mSprite.setTexture(mTexture);
-    mSprite.setScale(1.0f, 1.0f);
-    mSprite.setPosition(800.0f, mRow * 100.0f);
+    mSprite.setScale(80.f/100, 80.f/100);
+    mSprite.setPosition(1280.f, mRow * 80.f);
+    mSprite.setOrigin({50,50});
 }
 
 /**
@@ -37,15 +38,16 @@ slowObstacle::slowObstacle() {
 obsType slowObstacle::update(double dt) {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({-100, mRow * 100.0f});
-        mSpeed = 0.1f;
+        mSprite.setPosition({-80.f, mRow * 80.f});
+        mCurSpeed = mSlowSpeed;
     }
    
-    mSprite.setPosition(mSprite.getPosition().x + mSpeed*dt*5000, mSprite.getPosition().y); 
+    mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y); 
+    mSprite.setRotation(mSprite.getRotation()+mCurSpeed*dt);
     
-    if(mSprite.getPosition().x > 800.0f) {
-        mSprite.setPosition({800.0f, mRow * 100.0f}); 
-        mSpeed = 0.0f; 
+    if(mSprite.getPosition().x > 1280.f) {
+        mSprite.setPosition({1280.f, mRow * 80.f}); 
+        mCurSpeed = 0.0f; 
         mIsInUse = false; 
         return noObs;
     }

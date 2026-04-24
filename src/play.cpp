@@ -15,16 +15,18 @@
  *          Set background (error if not exist)
  */
 Play::Play() {
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
-    if (!mBackgroundTexture.loadFromFile("assets/space.jpg")) {
+    if (!mBackgroundTexture.loadFromFile("assets/spacebackgroundsmaller.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
 
     mBackground.setTexture(mBackgroundTexture);
-    mBackground.setPosition({0,0});
+    mBackground.setOrigin({250, 125});
+    mBackground.setPosition({400, 200});
+    mBackground.setScale({2.5, 2.5});
 }
 
 void Play::setPlayerSkin(std::string file)
@@ -51,11 +53,13 @@ void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
 screenState Play::update(double dt) {
     mCharacter.update();
     
-    for(int i = 0; i < 5; i++)
+    for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
     
-    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
+    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
+        std::cout << "GAME OVER\n";
         return menu;
+    }
     else 
         return play;
 }
@@ -68,7 +72,7 @@ screenState Play::update(double dt) {
 void Play::render(sf::RenderWindow& window) {
     window.draw(mBackground);
     window.draw(mCharacter);
-    for(int i = 0; i < 5; i++) 
+    for(int i = 0; i < 9; i++) 
         mRow[i].render(window);
 }
 
@@ -77,6 +81,6 @@ void Play::render(sf::RenderWindow& window) {
  */
 void Play::reset() {
     mCharacter.reset();
-    for(int i = 0; i < 5; i++) 
+    for(int i = 0; i < 9; i++) 
         mRow[i].reset();
 }

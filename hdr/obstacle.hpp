@@ -15,7 +15,7 @@ enum obsType {noObs, slowObs, medObs, fastObs};
 class Obstacle {
 public:
     Obstacle() {};
-    ~Obstacle() {};
+    virtual ~Obstacle() {};
 
     virtual obsType update(double dt) = 0;
     virtual void render(sf::RenderWindow& window) = 0;
@@ -25,9 +25,10 @@ public:
     void reset();
 
 protected:
-    float mSpeed;
+    float mCurSpeed;
+
     sf::Sprite mSprite;
     sf::Texture mTexture;
-    int mRow;
-    bool mIsInUse;
+    int mRow = -1;
+    bool mIsInUse = false;
 };

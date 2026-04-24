@@ -14,16 +14,16 @@
  *          Set initial position of sprite
  */
 mediumObstacle::mediumObstacle() {
-    if(!mTexture.loadFromFile("assets/discord-icon.png")) {
+    if(!mTexture.loadFromFile("assets/spaceship.png")) {
         std::cout<<"Error opening file\n";
         exit(1);
     }
 
-    mSpeed = 0.2f;
+    mCurSpeed = mMedSpeed;
     
     mSprite.setTexture(mTexture);
-    mSprite.setScale(1.0f, 1.0f);
-    mSprite.setPosition(800.0f, mRow * 100.0f);
+    mSprite.setScale(80.f/100, 80.f/100);
+    mSprite.setPosition(1280.f, mRow * 80.f);
 }
 
 /**
@@ -38,15 +38,15 @@ obsType mediumObstacle::update(double dt)
 {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({-100, mRow * 100.0f});
-        mSpeed = 0.2f;
+        mSprite.setPosition({-80.f, mRow * 80.f});
+        mCurSpeed = mMedSpeed;
     }
 
-    mSprite.setPosition(mSprite.getPosition().x + mSpeed*dt*5000, mSprite.getPosition().y);
+    mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y);
 
-    if(mSprite.getPosition().x > 800.0f) {
-        mSprite.setPosition({800.0f, mRow * 100.0f});
-        mSpeed = 0.0f;
+    if(mSprite.getPosition().x > 1280.f) {
+        mSprite.setPosition({1280.f, mRow * 80.f});
+        mCurSpeed = 0.0f;
         mIsInUse = false;
         return noObs;
     }

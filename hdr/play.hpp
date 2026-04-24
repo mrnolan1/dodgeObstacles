@@ -31,5 +31,5 @@ private:
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
-    Row mRow[5];
+    Row mRow[9];
 };

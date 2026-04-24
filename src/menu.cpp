@@ -34,8 +34,8 @@ Menu::Menu() {
     }
     mBackground.setTexture(mBackgroundTexture);
     mSecondBackground.setTexture(mBackgroundTexture);
-    mBackground.setPosition({0,0});
-    mSecondBackground.setPosition({-800, 0});
+    mBackground.setPosition({mBackgroundCounter,0});
+    mSecondBackground.setPosition({mBackgroundCounter2, 0});
 
     mPlay.setText("Play");
     mPlay.setPosition({400, 400});
@@ -66,7 +66,9 @@ Menu::Menu() {
  * @return State 
  */
 screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window) {
-    if (mPlay.handleInput(event, window))
+    if (mPlay.handleInput(event, window) || 
+        (event.type == sf::Event::KeyPressed &&
+        event.key.code == sf::Keyboard::Space))
         return play;
     else if (mControls.handleInput(event, window))
         return controls;
@@ -79,27 +81,26 @@ screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window) {
 /**
  * @brief Update each button
  */
-void Menu::update() {
+void Menu::update(double dt) {
     mPlay.update();
     mControls.update();
     mSkins.update();
+
+    moveBackground(dt);
 }
 
 /**
  * @brief Move background (flying through space)
  */
-void Menu::moveBackground() {
-    if(mBackground.getPosition().x > 800) {
-        mBackground.setPosition({-800,0});
-        mBackgroundCounter = -800;
-    }
-    else if(mSecondBackground.getPosition().x > 800) {
-        mSecondBackground.setPosition({-800,0});
-        mBackgroundCounter2 = -800;
+void Menu::moveBackground(double dt) {
+    if(mBackgroundCounter > 1280) {
+        mBackgroundCounter = -1280;
+    } else if(mBackgroundCounter2 > 1280) {
+        mBackgroundCounter2 = -1280;
     }
 
-    mBackgroundCounter = mBackgroundCounter + 0.5;
-    mBackgroundCounter2 = mBackgroundCounter2 + 0.5;
+    mBackgroundCounter += 500*dt;
+    mBackgroundCounter2 += 500*dt;
     mBackground.setPosition({mBackgroundCounter, 0});
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
 }
@@ -122,10 +123,10 @@ void Menu::fadeInText() {
  */
 void Menu::render(sf::RenderWindow& window) {
     window.draw(mBackground);
+    window.draw(mSecondBackground);
 
     window.draw(mTitle);
     window.draw(mPlay);
     window.draw(mControls);
     window.draw(mSkins);
-    moveBackground();
 }

@@ -51,7 +51,7 @@ void Game::handleInput(sf::RenderWindow& window) {
 void Game::update(double dt) {
     switch(mScreenState) {
         case menu:
-            mMenuScreen.update();
+            mMenuScreen.update(dt);
             break;
         case play:
             mScreenState = mPlayScreen.update(dt);

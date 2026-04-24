@@ -43,7 +43,7 @@ Button::Button()
     mText.setPosition(mPosition.x, mPosition.y-(mButton.getGlobalBounds().width/4)/4);
 
     mTextNormal = sf::Color::Black;
-    mTextHover = sf::Color::Red;
+    mTextHover = {0, 0, 128, 255};
 
     mText.setFillColor(mTextNormal);
     mBtnState = normal;
@@ -89,7 +89,7 @@ Button::Button(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Colo
     mText.setPosition(mPosition.x, mPosition.y-(mButton.getGlobalBounds().width/4)/4);
 
     mTextNormal = sf::Color::Black;
-    mTextHover = sf::Color::Red;
+    mTextHover = sf::Color::White;
 
     mText.setFillColor(mTextNormal);
     mBtnState = normal;
@@ -216,7 +216,6 @@ bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
             if(mouseInButton)
             {
                 mBtnState = state::clicked;
-                return true;
             }
             else
             {
@@ -231,6 +230,7 @@ bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
             if(mouseInButton)
             {
                 mBtnState = state::hovered;
+                return true;
             }
             else
             {

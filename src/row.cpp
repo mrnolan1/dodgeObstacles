@@ -22,7 +22,7 @@ Row::Row() {
 void Row::update(double dt) {
     switch(mObsType) {
         case noObs: {
-            mObsType = randomObsType();
+            mObsType = randomObsType(dt);
             break;
         }
         case slowObs: {
@@ -46,9 +46,13 @@ void Row::update(double dt) {
  * @param window 
  */
 void Row::render(sf::RenderWindow& window) {
+    std::cout << "Start render\n";
     mSlowObs.render(window);
+    std::cout << "Render between slow and med\n";
     mMedObs.render(window);
+    std::cout << "Render between med and fast\n";
     mFastObs.render(window);
+    std::cout << "End render\n";
 }
 
 /**
@@ -68,18 +72,16 @@ void Row::setRow(int row) {
  * 
  * @return obsType 
  */
-obsType Row::randomObsType() {
-    static std::random_device rd;  
-    static std::mt19937 gen(rd()); 
-
-    std::uniform_int_distribution<> dist(1, 10000);
-    int num = dist(gen);
+obsType Row::randomObsType(double dt) {
+    static std::random_device rd;                   // a seed source for the random number engine
+    static std::mt19937 gen(rd());                  // mersenne_twister_engine seeded with rd()
+    std::uniform_int_distribution<> dist(1, 1/dt); // Use distrib to transform the random unsigned int
     
-    if(num == 1)
-        return slowObs;
-    else if(num == 2)
+    if(dist(gen) == 1)
+        return slowObs; 
+    else if(dist(gen) == 2)
         return medObs;
-    else if(num == 3)
+    else if(dist(gen) == 3)
         return fastObs;
     else
         return noObs;

@@ -16,4 +16,7 @@ public:
 
     obsType update(double dt);
     void render(sf::RenderWindow& window);
+
+private:
+    float mMedSpeed = 1000.0f;
 };

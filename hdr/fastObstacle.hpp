@@ -15,4 +15,7 @@ public:
     ~fastObstacle() {};
     obsType update(double dt);
     void render(sf::RenderWindow& window);
+
+private:
+    float mFastSpeed = 1250.0f;
 };
