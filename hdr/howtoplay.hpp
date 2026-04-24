@@ -8,17 +8,17 @@
  * @copyright Copyright (c) 2026
  * 
  */
-#ifndef CONTROLS_HPP
-#define CONTROLS_HPP
+#ifndef HOWTOPLAY_HPP
+#define HOWTOPLAY_HPP
 #include "../hdr/menu.hpp"
 #include "../hdr/button.hpp"
 #include <iostream>
 #include <string>
 #include <SFML/Graphics.hpp>
 
-class Controls {
+class HowToPlay {
 public:
-    Controls();
+    HowToPlay();
     
     screenState handleInput(sf::Event& event, sf::RenderWindow& window);
     void update();
@@ -35,8 +35,7 @@ private:
     float mBackgroundCounter = 0;
     float mBackgroundCounter2 = 800;
     Button mMenu;
-    sf::Text mInstructions;
-    sf::Text mInstructions2;
+    Button mInstructions;
 };
 //w move up s move down and space starts the game
 

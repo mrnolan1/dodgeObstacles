@@ -12,6 +12,7 @@
 #include "../hdr/menu.hpp"
 #include "../hdr/play.hpp"
 #include "../hdr/skins.hpp"
+#include "../hdr/controls.hpp"
 
 class Game {
 public:
@@ -24,6 +25,6 @@ private:
     screenState mScreenState;
     Menu mMenuScreen;
     Play mPlayScreen;
-    //Controls mControlsScreen;
+    Controls mControlsScreen;
     Skins mSkinsScreen;
 };
