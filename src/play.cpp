@@ -18,15 +18,14 @@ Play::Play() {
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
-    if (!mBackgroundTexture.loadFromFile("assets/spacebackgroundsmaller.png")) {
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundsmaller.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
 
     mBackground.setTexture(mBackgroundTexture);
-    mBackground.setOrigin({250, 125});
-    mBackground.setPosition({400, 200});
-    mBackground.setScale({2.5, 2.5});
+    mBackground.setPosition({0, 0});
+    mBackground.setScale({1280.f/500.f, 720.f/250.f});
 }
 
 void Play::setPlayerSkin(std::string file)
@@ -57,10 +56,9 @@ screenState Play::update(double dt) {
         mRow[i].update(dt);
     
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
-        std::cout << "GAME OVER\n";
-        return menu;
-    }
-    else 
+        
+        return menu;        
+    } else 
         return play;
 }
 

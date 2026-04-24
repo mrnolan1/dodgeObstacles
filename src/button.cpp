@@ -14,14 +14,14 @@
 Button::Button()
 {
     //set texture to button.png
-    if (!mTexture.loadFromFile("assets/button.png"))
+    if (!mTexture.loadFromFile("ast/button.png"))
     {
         std::cout<<"Error opening file\n";
         exit(1);
     }
 
     //set font to SPACE.ttf
-    if (!mFont.loadFromFile("assets/SPACE.ttf"))
+    if (!mFont.loadFromFile("ast/SPACE.ttf"))
     {
         std::cout<<"Error opening file\n";
         exit(2);
@@ -60,14 +60,14 @@ Button::Button()
 Button::Button(std::string s, sf::Vector2f position, sf::Vector2f size, sf::Color color)
 {
     //set texture to button.png
-    if (!mTexture.loadFromFile("assets/button.png"))
+    if (!mTexture.loadFromFile("ast/button.png"))
     {
         std::cout<<"Error opening file\n";
         exit(1);
     }
 
     //set font to SPACE.ttf
-    if (!mFont.loadFromFile("assets/SPACE.ttf"))
+    if (!mFont.loadFromFile("ast/SPACE.ttf"))
     {
         std::cout<<"Error opening file\n";
         exit(2);

@@ -37,6 +37,6 @@ void Obstacle::setRow(int row) {
  * 
  */
 void Obstacle::reset() {
-    mSprite.setPosition(1280.f, mRow * 80.f);
+    mSprite.setPosition(1320.f, mRow * 80.f);
 }
 

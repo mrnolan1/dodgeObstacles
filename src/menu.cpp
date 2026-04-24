@@ -17,18 +17,18 @@
  *              Skins
  */
 Menu::Menu() {
-    if (!mFont.loadFromFile("assets/SPACE.ttf")) {
+    if (!mFont.loadFromFile("ast/SPACE.ttf")) {
         std::cout<<"Error opening file\n";
         exit(2);
     }
     mTitle.setFont(mFont);
     mTitle.setCharacterSize(60);
-    mTitle.setString("    Dodge\nObstacles!");
+    mTitle.setString("Adrift");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
     mTitle.setPosition({400,125});
     mTitle.setFillColor({0,0,0,0});
     
-    if (!mBackgroundTexture.loadFromFile("assets/space.jpg")) {
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundsmaller.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
@@ -36,6 +36,8 @@ Menu::Menu() {
     mSecondBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({mBackgroundCounter,0});
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
+    mBackground.setScale(1280.f/500.f, 720.f/250.f);
+    mSecondBackground.setScale(1280.f/500.f, 720.f/250.f);
 
     mPlay.setText("Play");
     mPlay.setPosition({400, 400});
@@ -109,9 +111,9 @@ void Menu::moveBackground(double dt) {
  * @brief Fade title in
  * 
  */
-void Menu::fadeInText() {
+void Menu::fadeInText(double dt) {
     if (mColorCounter < 255) {
-        mColorCounter++;
+        mColorCounter+=1000*dt;
         mTitle.setFillColor({mColorCounter, mColorCounter, mColorCounter, mColorCounter});
     }
 }
