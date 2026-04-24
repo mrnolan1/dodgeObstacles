@@ -42,13 +42,13 @@ Controls::Controls() {
     //set label
     mTitle.setString("    How to Play\n");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({350,125});
+    mTitle.setPosition({600,125});
 
     
     mInstructions.setFont(mFont);
     mInstructions.setCharacterSize(15);
     mInstructions.setString("       Objective: Avoid Asteroids, Spaceships and UFO's\n");
-    mInstructions.setPosition({50, 250});
+    mInstructions.setPosition({300, 250});
 
     mInstructions2.setString("          How to move Character:\n              Press w to move up \n            press s to move down, \n Press space bar to start the game.\n");
     mInstructions2.setFont(mFont);
