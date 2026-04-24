@@ -18,7 +18,7 @@ Play::Play() {
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
-    if (!mBackgroundTexture.loadFromFile("assets/spacebackgroundsmaller.png")) {
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundsmaller.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
@@ -55,9 +55,10 @@ screenState Play::update(double dt) {
     for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
     
-    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
-        return menu;
-    else 
+    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
+        
+        return menu;        
+    } else 
         return play;
 }
 

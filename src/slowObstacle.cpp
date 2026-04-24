@@ -14,7 +14,7 @@
  *          Set initial position of sprite
  */
 slowObstacle::slowObstacle() {
-    if(!mTexture.loadFromFile("assets/asteroid.png")) {
+    if(!mTexture.loadFromFile("ast/asteroid.png")) {
         std::cerr << "Error opening file\n";
         exit(1);
     }
@@ -24,7 +24,7 @@ slowObstacle::slowObstacle() {
     mSprite.setTexture(mTexture);
     mSprite.setScale(80.f/100, 80.f/100);
     mSprite.setPosition(1320.f, mRow * 80.f * 40.f);
-    mSprite.setOrigin({50,50});
+    // mSprite.setOrigin({50,50});
 }
 
 /**
@@ -38,15 +38,15 @@ slowObstacle::slowObstacle() {
 obsType slowObstacle::update(double dt) {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({-40.f, mRow * 80.f + 40.f});
+        mSprite.setPosition({-80.f, mRow * 80.f});
         mCurSpeed = mSlowSpeed;
     }
    
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y); 
-    mSprite.setRotation(mSprite.getRotation()+250.f*dt);
+    // mSprite.setRotation(mSprite.getRotation()+250.f*dt);
     
-    if(mSprite.getPosition().x > 1320.f) {
-        mSprite.setPosition({1320.f, mRow * 80.f + 40.f}); 
+    if(mSprite.getPosition().x > 1280.f) {
+        mSprite.setPosition({1400.f, mRow * 80.f + 40.f}); 
         mCurSpeed = 0.0f; 
         mIsInUse = false; 
         return noObs;

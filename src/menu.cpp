@@ -17,7 +17,7 @@
  *              Skins
  */
 Menu::Menu() {
-    if (!mFont.loadFromFile("assets/SPACE.ttf")) {
+    if (!mFont.loadFromFile("ast/SPACE.ttf")) {
         std::cout<<"Error opening file\n";
         exit(2);
     }
@@ -28,7 +28,7 @@ Menu::Menu() {
     mTitle.setPosition({400,125});
     mTitle.setFillColor({0,0,0,0});
     
-    if (!mBackgroundTexture.loadFromFile("assets/spacebackgroundsmaller.png")) {
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundsmaller.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
