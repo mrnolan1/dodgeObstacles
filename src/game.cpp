@@ -35,9 +35,9 @@ void Game::handleInput(sf::RenderWindow& window) {
             case play:
                 mPlayScreen.handleInput(event, window);
                 break;
-            // case controls:
-            //     mScreenState = mControlsScreen;
-            //     break;
+            case controls:
+                mScreenState = mControlsScreen.handleInput(event, window);
+                break;
             case skins:
                 mScreenState = mSkinsScreen.handleInput(event, window);
                 break;
@@ -56,9 +56,9 @@ void Game::update(double dt) {
         case play:
             mScreenState = mPlayScreen.update(dt);
             break;
-        // case controls:
-        //     mControlsScreen.update();
-        //     break;
+        case controls:
+            mControlsScreen.update();
+            break;
         case skins:
             mPlayScreen.setPlayerSkin(mSkinsScreen.getSkinType());
             mSkinsScreen.update();
@@ -81,9 +81,9 @@ void Game::render(sf::RenderWindow& window, double dt) {
         case play:
             mPlayScreen.render(window);
             break;
-        // case controls:
-        //     mControlsScreen.render(window);
-        //     break;
+        case controls:
+            mControlsScreen.render(window);
+            break;
         case skins:
             mSkinsScreen.render(window);
             break;
