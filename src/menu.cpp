@@ -39,6 +39,7 @@ Menu::Menu() {
     mBackground.setScale(1280.f/500.f, 720.f/250.f);
     mSecondBackground.setScale(1280.f/500.f, 720.f/250.f);
 
+
     mPlay.setText("Play");
     mPlay.setPosition({400, 400});
     mPlay.setSize({240, 100});
@@ -124,6 +125,8 @@ void Menu::fadeInText(double dt) {
  * @param window 
  */
 void Menu::render(sf::RenderWindow& window) {
+
+    
     window.draw(mBackground);
     window.draw(mSecondBackground);
 

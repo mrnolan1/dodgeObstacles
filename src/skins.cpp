@@ -99,7 +99,7 @@ screenState Skins::handleInput(sf::Event& event,  sf::RenderWindow& mWindow)
     }
     else if (mSkin2Button.handleInput(event, mWindow))
     {
-        mSkinType = "png/astronaut.png";
+        mSkinType = "assets/astronaut.png";
         mCurrentSkinText.setString("Your current skin is: Astronaut");
     }
     else if (mSkin3Button.handleInput(event, mWindow))
