@@ -48,20 +48,20 @@ Controls::Controls() {
     mInstructions.setFont(mFont);
     mInstructions.setCharacterSize(15);
     mInstructions.setString("       Objective: Avoid Asteroids, Spaceships and UFO's\n");
-    mInstructions.setPosition({300, 250});
+    mInstructions.setPosition({335, 250});
 
     mInstructions2.setString("          How to move Character:\n              Press w to move up \n            press s to move down, \n Press space bar to start the game.\n");
     mInstructions2.setFont(mFont);
     mInstructions2.setCharacterSize(15);
-    mInstructions2.setPosition({170, 280});
+    mInstructions2.setPosition({450, 280});
     
 
     
     mMenu.setText("Menu");
-    mMenu.setPosition({405, 450});
+    mMenu.setPosition({635, 450});
     mMenu.setSize({240, 100});
     mMenu.setColorTextNormal(sf::Color::White);
-    mMenu.setTextPosition({475,450});
+    mMenu.setTextPosition({700,450});
 
 
 }
