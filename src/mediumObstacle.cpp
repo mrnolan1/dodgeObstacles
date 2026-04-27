@@ -14,7 +14,7 @@
  *          Set initial position of sprite
  */
 mediumObstacle::mediumObstacle() {
-    if(!mTexture.loadFromFile("assets/spaceship.png")) {
+    if(!mTexture.loadFromFile("ast/spaceship.png")) {
         std::cout<<"Error opening file\n";
         exit(1);
     }

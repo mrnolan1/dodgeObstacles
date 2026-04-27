@@ -71,12 +71,12 @@ void Game::update(double dt) {
  * 
  * @param window 
  */
-void Game::render(sf::RenderWindow& window) {
+void Game::render(sf::RenderWindow& window, double dt) {
     window.clear();
     switch (mScreenState) {
         case menu:
             mMenuScreen.render(window);
-            mMenuScreen.fadeInText();
+            mMenuScreen.fadeInText(dt);
             break;
         case play:
             mPlayScreen.render(window);

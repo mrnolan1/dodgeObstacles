@@ -13,7 +13,7 @@
  *          Load character texture, set size, set row to center
  */
 Character::Character() {
-    if (!mTexture.loadFromFile("assets/astronaut.png")) { //check if character image file can be opened
+    if (!mTexture.loadFromFile("ast/astronaut.png")) { //check if character image file can be opened
         std::cout<<"Error opening file\n";
         exit(1);
     }
@@ -76,6 +76,6 @@ void Character::reset() {
  * @param file 
  */
 void Character::setSkin(std::string file) {
-    if(mTexture.loadFromFile(file))
+    if(!mTexture.loadFromFile(file))
         std::cerr << "Error opening skin file" << std::endl;
 }

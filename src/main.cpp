@@ -20,7 +20,7 @@ int main()
         double dt = clock.restart().asSeconds();
         Game.handleInput(window); 
         Game.update(dt); 
-        Game.render(window);
+        Game.render(window, dt);
     }  
 
     return 0;

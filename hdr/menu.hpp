@@ -20,7 +20,7 @@ public:
     screenState handleInput(sf::Event& event, sf::RenderWindow& mWindow);
     void update(double dt);
     void moveBackground(double dt);
-    void fadeInText();
+    void fadeInText(double dt);
 
     void render(sf::RenderWindow& window);
 

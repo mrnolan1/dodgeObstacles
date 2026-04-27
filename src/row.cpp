@@ -46,13 +46,9 @@ void Row::update(double dt) {
  * @param window 
  */
 void Row::render(sf::RenderWindow& window) {
-    std::cout << "Start render\n";
     mSlowObs.render(window);
-    std::cout << "Render between slow and med\n";
     mMedObs.render(window);
-    std::cout << "Render between med and fast\n";
     mFastObs.render(window);
-    std::cout << "End render\n";
 }
 
 /**

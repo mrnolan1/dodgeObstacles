@@ -19,12 +19,12 @@
 Controls::Controls() {
 
     //initialize variables and load resources here
-    if (!mFont.loadFromFile("assets/SPACE.ttf"))
+    if (!mFont.loadFromFile("ast/SPACE.ttf"))
     {
         std::cout<<"Error opening file\n";
         exit(2);
     }
-    if (!mBackgroundTexture.loadFromFile("assets/space.jpg"))
+    if (!mBackgroundTexture.loadFromFile("ast/space.jpg"))
     {
         std::cout<<"Error opening background file\n";
         exit(2);

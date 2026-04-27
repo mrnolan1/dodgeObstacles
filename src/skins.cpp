@@ -3,33 +3,33 @@
 
 Skins::Skins()
 {
-    if(!mSkin1Texture.loadFromFile("assets/alien.png"))
+    if(!mSkin1Texture.loadFromFile("ast/alien.png"))
     {
         std::cerr << "Error loading skin1 file" << std::endl;
         exit(0);
     }
-    if(!mSkin2Texture.loadFromFile("assets/astronaut.png"))
+    if(!mSkin2Texture.loadFromFile("ast/astronaut.png"))
     {
         std::cerr << "Error loading skin2 file" << std::endl;
         exit(0);
     }
-    if(!mSkin3Texture.loadFromFile("png/testCharacter copy 3.png"))
+    if(!mSkin3Texture.loadFromFile("ast/astronaut.png"))
     {
         std::cerr << "Error loading skin3 file" << std::endl;
         exit(0);
     }
-    if(!mFont.loadFromFile("assets/SPACE.ttf"))
+    if(!mFont.loadFromFile("ast/SPACE.ttf"))
     {
         std::cerr << "Error loading font file" << std::endl;
         exit(0);
     }
-    if(!mBackgroundTexture.loadFromFile("assets/space.jpg"))
+    if(!mBackgroundTexture.loadFromFile("ast/space.jpg"))
     {
         std::cerr << "Error loading background file" << std::endl;
         exit(0);
     }
 
-    mSkinType = "assets/astronaut.png";  //should be astronaut
+    mSkinType = "ast/astronaut.png";  //should be astronaut
 
     mBackground.setTexture(mBackgroundTexture);
 
@@ -94,12 +94,12 @@ screenState Skins::handleInput(sf::Event& event,  sf::RenderWindow& mWindow)
 {
     if (mSkin1Button.handleInput(event, mWindow))
     {
-        mSkinType = "assets/alien.png";
+        mSkinType = "ast/alien.png";
         mCurrentSkinText.setString("Your current skin is: Alien");
     }
     else if (mSkin2Button.handleInput(event, mWindow))
     {
-        mSkinType = "png/astronaut.png";
+        mSkinType = "assets/astronaut.png";
         mCurrentSkinText.setString("Your current skin is: Astronaut");
     }
     else if (mSkin3Button.handleInput(event, mWindow))
