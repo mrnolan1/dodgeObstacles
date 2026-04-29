@@ -22,13 +22,13 @@ Menu::Menu() {
         exit(2);
     }
     mTitle.setFont(mFont);
-    mTitle.setCharacterSize(60);
+    mTitle.setCharacterSize(110);
     mTitle.setString("Adrift");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({400,125});
+    mTitle.setPosition({640, 150});
     mTitle.setFillColor({0,0,0,0});
     
-    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundsmaller.png")) {
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
@@ -36,29 +36,30 @@ Menu::Menu() {
     mSecondBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({mBackgroundCounter,0});
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
-    mBackground.setScale(1280.f/500.f, 720.f/250.f);
-    mSecondBackground.setScale(1280.f/500.f, 720.f/250.f);
+    mBackground.setScale(1.01, 1);
+    mSecondBackground.setScale(1.01, 1);
 
 
     mPlay.setText("Play");
-    mPlay.setPosition({400, 400});
-    mPlay.setSize({240, 100});
+    mPlay.setPosition({640, 440});
+    mPlay.setSize({400, 200});
     mPlay.setColorTextNormal(sf::Color::White);
-    mPlay.setTextPosition({465,400});
+    mPlay.setTextSize(85);
+    mPlay.setTextPosition({640, 415});
 
     mControls.setText("Controls");
-    mControls.setPosition({150, 400});
-    mControls.setSize({230, 71});
+    mControls.setPosition({220, 440});
+    mControls.setSize({400, 150});
     mControls.setColorTextNormal(sf::Color::White);
-    mControls.setTextSize(25);
-    mControls.setTextPosition({380,415});
+    mControls.setTextSize(45);
+    mControls.setTextPosition({370,440});
 
     mSkins.setText("Skins");
-    mSkins.setPosition({650, 400});
-    mSkins.setSize({230, 71});
+    mSkins.setPosition({1060, 440});
+    mSkins.setSize({400, 150});
     mSkins.setColorTextNormal(sf::Color::White);
-    mSkins.setTextSize(25);
-    mSkins.setTextPosition({780,415});
+    mSkins.setTextSize(65);
+    mSkins.setTextPosition({1100,430});
 }
 
 /**
@@ -102,8 +103,8 @@ void Menu::moveBackground(double dt) {
         mBackgroundCounter2 = -1280;
     }
 
-    mBackgroundCounter += 500*dt;
-    mBackgroundCounter2 += 500*dt;
+    mBackgroundCounter += 400*dt;
+    mBackgroundCounter2 += 400*dt;
     mBackground.setPosition({mBackgroundCounter, 0});
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
 }
@@ -114,7 +115,7 @@ void Menu::moveBackground(double dt) {
  */
 void Menu::fadeInText(double dt) {
     if (mColorCounter < 255) {
-        mColorCounter+=1000*dt;
+        mColorCounter+=350*dt;
         mTitle.setFillColor({mColorCounter, mColorCounter, mColorCounter, mColorCounter});
     }
 }

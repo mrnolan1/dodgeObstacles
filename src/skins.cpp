@@ -13,7 +13,7 @@ Skins::Skins()
         std::cerr << "Error loading skin2 file" << std::endl;
         exit(0);
     }
-    if(!mSkin3Texture.loadFromFile("ast/astronaut.png"))
+    if(!mSkin3Texture.loadFromFile("ast/dog.png"))
     {
         std::cerr << "Error loading skin3 file" << std::endl;
         exit(0);
@@ -23,13 +23,13 @@ Skins::Skins()
         std::cerr << "Error loading font file" << std::endl;
         exit(0);
     }
-    if(!mBackgroundTexture.loadFromFile("ast/space.jpg"))
+    if(!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png"))
     {
         std::cerr << "Error loading background file" << std::endl;
         exit(0);
     }
 
-    mSkinType = "ast/astronaut.png";  //should be astronaut
+    mSkinType = "ast/astronaut.png"; 
 
     mBackground.setTexture(mBackgroundTexture);
 
@@ -40,24 +40,24 @@ Skins::Skins()
     mCurrentSkin = mSkin1;
 
     mTitle.setFont(mFont);
-    mTitle.setCharacterSize(60);
+    mTitle.setCharacterSize(100);
     mTitle.setString("Skins");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({500,50});
+    mTitle.setPosition({640,50});
     mTitle.setFillColor(sf::Color::White);
 
     mCurrentSkinText.setFont(mFont);
-    mCurrentSkinText.setCharacterSize(20);
+    mCurrentSkinText.setCharacterSize(30);
     mCurrentSkinText.setString("Your current skin is: Astronaut");
     mCurrentSkinText.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mCurrentSkinText.setPosition({350,150});
+    mCurrentSkinText.setPosition({500,170});
     mCurrentSkinText.setFillColor(sf::Color::White);
 
     mSkin1.setPosition({360, 200});
 
     mSkin1Button.setText("Alien");
-    mSkin1Button.setPosition({400, 400});
-    mSkin1Button.setSize({240, 60});;
+    mSkin1Button.setPosition({500, 400});
+    mSkin1Button.setSize({320, 120});;
     mSkin1Button.setColorTextNormal(sf::Color::White);
     mSkin1Button.setTextSize(23);
     mSkin1Button.setTextPosition({525,415});
@@ -65,7 +65,7 @@ Skins::Skins()
     mSkin2.setPosition({100, 200});
 
     mSkin2Button.setText("Astronaut");
-    mSkin2Button.setPosition({150, 400});
+    mSkin2Button.setPosition({200, 400});
     mSkin2Button.setSize({240, 60});
     mSkin2Button.setColorTextNormal(sf::Color::White);
     mSkin2Button.setTextSize(23);
@@ -99,12 +99,12 @@ screenState Skins::handleInput(sf::Event& event,  sf::RenderWindow& mWindow)
     }
     else if (mSkin2Button.handleInput(event, mWindow))
     {
-        mSkinType = "assets/astronaut.png";
+        mSkinType = "ast/astronaut.png";
         mCurrentSkinText.setString("Your current skin is: Astronaut");
     }
     else if (mSkin3Button.handleInput(event, mWindow))
     {
-        mSkinType = "png/testCharacter copy 3.png";
+        mSkinType = "ast/dog.png";
         mCurrentSkinText.setString("Your current skin is: Dog");
     }
     else if (mExitButton.handleInput(event, mWindow))
