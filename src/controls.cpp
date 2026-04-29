@@ -24,7 +24,7 @@ Controls::Controls() {
         std::cout<<"Error opening file\n";
         exit(2);
     }
-    if (!mBackgroundTexture.loadFromFile("ast/space.jpg"))
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png"))
     {
         std::cout<<"Error opening background file\n";
         exit(2);
@@ -42,26 +42,26 @@ Controls::Controls() {
     //set label
     mTitle.setString("    How to Play\n");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({350,125});
+    mTitle.setPosition({600,125});
 
     
     mInstructions.setFont(mFont);
-    mInstructions.setCharacterSize(15);
+    mInstructions.setCharacterSize(25);
     mInstructions.setString("       Objective: Avoid Asteroids, Spaceships and UFO's\n");
-    mInstructions.setPosition({50, 250});
+    mInstructions.setPosition({30, 130});
 
     mInstructions2.setString("          How to move Character:\n              Press w to move up \n            press s to move down, \n Press space bar to start the game.\n");
     mInstructions2.setFont(mFont);
-    mInstructions2.setCharacterSize(15);
-    mInstructions2.setPosition({170, 280});
+    mInstructions2.setCharacterSize(30);
+    mInstructions2.setPosition({180, 250});
     
 
     
     mMenu.setText("Menu");
-    mMenu.setPosition({405, 450});
+    mMenu.setPosition({635, 600});
     mMenu.setSize({240, 100});
     mMenu.setColorTextNormal(sf::Color::White);
-    mMenu.setTextPosition({475,450});
+    mMenu.setTextPosition({700,600});
 
 
 }

@@ -1,7 +1,7 @@
 #include "../hdr/game.hpp"
 #include "catch_amalgamated.hpp"
-
-TEST_CASE(" ", "Button class")
+float dt = 100;
+TEST_CASE("randomObsType() ", "Button class")
 {
     
 
