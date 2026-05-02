@@ -10,7 +10,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-enum obsType {noObs, slowObs, medObs, fastObs};
+enum obsType {noObs, slowObs, medObs, fastObs, bubObs};
 
 class Obstacle {
 public:

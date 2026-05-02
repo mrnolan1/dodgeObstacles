@@ -111,13 +111,13 @@ void Menu::update(double dt) {
  */
 void Menu::moveBackground(double dt) {
     if(mBackgroundCounter > 1280) {
-        mBackgroundCounter = -1280;
+        mBackgroundCounter = -1280.f;
     } else if(mBackgroundCounter2 > 1280) {
-        mBackgroundCounter2 = -1280;
+        mBackgroundCounter2 = -1280.f;
     }
 
-    mBackgroundCounter += 400*dt;
-    mBackgroundCounter2 += 400*dt;
+    mBackgroundCounter += 400.f*static_cast<float>(dt);
+    mBackgroundCounter2 += 400.f*static_cast<float>(dt);
     mBackground.setPosition({mBackgroundCounter, 0});
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
 }
@@ -127,9 +127,14 @@ void Menu::moveBackground(double dt) {
  * 
  */
 void Menu::fadeInText(double dt) {
-    if (mColorCounter < 255) {
-        mColorCounter+=350*dt;
-        mTitle.setFillColor({mColorCounter, mColorCounter, mColorCounter, mColorCounter});
+    if (mColorCounter < 255.0) {
+        mColorCounter += 350.0 * dt;
+
+        if (mColorCounter > 255.0)
+            mColorCounter = 255.0;
+
+        uint8_t alpha = static_cast<uint8_t>(mColorCounter);
+        mTitle.setFillColor({alpha, alpha, alpha, alpha});
     }
 }
 

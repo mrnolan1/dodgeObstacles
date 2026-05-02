@@ -18,14 +18,15 @@ Play::Play() {
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
-    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundsmaller.png")) {
+    if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png")) {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
 
     mBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0, 0});
-    mBackground.setScale({1280.f/500.f, 720.f/250.f});
+
+    // mBubExists = false;
 }
 
 void Play::setPlayerSkin(std::string file)
@@ -51,12 +52,32 @@ void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
  */
 screenState Play::update(double dt) {
     mCharacter.update();
-    
+
+    // Update each row
     for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
+
+    // // Check each row if a bubble exists
+    // // mBubExists = false;
+    // for(int i = 0; i < 9; i++)
+    //     if(mRow[i].getObsType() == bubObs)
+    //         mBubExists = true;
+
+    // // If a bubble exists, set all rows mVars to true
+    // if(mBubExists)
+    //     for(int i = 0; i < 9; i++)
+    //         mRow[i].setBubExists(true);
+    // else
+    //     for(int i = 0; i < 9; i++)
+    //         mRow[i].setBubExists(false);
     
+    // if(mRow[mCharacter.getRow()].getObsType() == bubObs) 
+    //     if(!mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
+    //         return menu;        
+    // else 
+    //     return play;
+
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
-        
         return menu;        
     } else 
         return play;

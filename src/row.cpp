@@ -37,6 +37,11 @@ void Row::update(double dt) {
             mObsType = mFastObs.update(dt);
             break;
         }
+        case bubObs: {
+            mObsType = mBubObs.update(dt);
+            mBubObs.displayPosition();
+            break;
+        }
     }
 }
 
@@ -49,6 +54,15 @@ void Row::render(sf::RenderWindow& window) {
     mSlowObs.render(window);
     mMedObs.render(window);
     mFastObs.render(window);
+    mBubObs.render(window);
+}
+
+// void Row::setBubExists(bool doesIt) {
+//     mBubExists = doesIt;
+// }
+
+obsType Row::getObsType() {
+    return mObsType;
 }
 
 /**
@@ -61,6 +75,7 @@ void Row::setRow(int row) {
     mSlowObs.setRow(row);
     mMedObs.setRow(row);
     mFastObs.setRow(row);
+    mBubObs.setRow(row);
 }
 
 /**
@@ -72,13 +87,16 @@ obsType Row::randomObsType(double dt) {
     static std::random_device rd;                   // a seed source for the random number engine
     static std::mt19937 gen(rd());                  // mersenne_twister_engine seeded with rd()
     std::uniform_int_distribution<> dist(1, 1/dt); // Use distrib to transform the random unsigned int
-    
-    if(dist(gen) == 1)
-        return slowObs; 
-    else if(dist(gen) == 2)
-        return medObs;
-    else if(dist(gen) == 3)
-        return fastObs;
+    int rand = dist(gen);
+
+    if(rand == 1)
+        return bubObs;
+    // else if(rand > 10 && rand < 20)
+    //     return slowObs; 
+    // else if(rand > 20 && rand < 30)
+    //     return medObs;
+    // else if(rand > 30 && rand < 40)
+    //     return fastObs;
     else
         return noObs;
 }
@@ -94,7 +112,7 @@ bool Row::eachCheckIfInCharColumn() {
         mMedObs.checkIfInCharColumn() ||
         mFastObs.checkIfInCharColumn()) 
             return true;
-    else   
+    else 
             return false;
 }
 
@@ -105,4 +123,5 @@ void Row::reset() {
     mSlowObs.reset();
     mMedObs.reset();
     mFastObs.reset();
+    mBubObs.reset();
 }

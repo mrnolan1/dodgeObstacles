@@ -25,7 +25,7 @@ public:
     void setSkin(std::string file);
 
 private:
-    int mRow;
+    int mRow = -1;
     sf::Sprite mCharacter;
     sf::Texture mTexture;
 };
