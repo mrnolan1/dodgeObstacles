@@ -32,4 +32,5 @@ private:
     sf::Texture mBackgroundTexture;
     Character mCharacter;
     Row mRow[9];
+    // bool mBubExists = false;
 };

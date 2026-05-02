@@ -5,12 +5,17 @@
  * @date 2026-04-04
  */
 
+#pragma once
+
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <random>
 #include "../hdr/slowObstacle.hpp"
 #include "../hdr/mediumObstacle.hpp"
 #include "../hdr/fastObstacle.hpp"
+#include "../hdr/bubbleObstacle.hpp"
+
+// #include "../hdr/play.hpp"
 
 class Row {
 public:
@@ -19,6 +24,9 @@ public:
 
     void update(double dt);
     void render(sf::RenderWindow& window);
+    
+    void setBubExists(bool doesIt);
+    obsType getObsType();
 
     void setRow(int row);
     obsType randomObsType(double dt);
@@ -26,9 +34,12 @@ public:
     void reset();
 
 private:
-    int mRowVal;
+    int mRowVal = -1;
     obsType mObsType;
     slowObstacle mSlowObs;
     mediumObstacle mMedObs;
     fastObstacle mFastObs;
+    bubbleObstacle mBubObs;
+
+    // bool mBubExists = false;
 };
