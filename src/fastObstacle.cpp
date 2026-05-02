@@ -23,7 +23,8 @@ fastObstacle::fastObstacle() {
 
     mSprite.setTexture(mTexture);
     mSprite.setScale(80.f/100, 80.f/100);
-    mSprite.setPosition(1280.f, mRow * 80.f); 
+    mSprite.setPosition(1320.f, mRow * 80.f + 40.f); 
+    mSprite.setOrigin({50,50});
 }
 
 /**
@@ -37,14 +38,14 @@ fastObstacle::fastObstacle() {
 obsType fastObstacle::update(double dt) {
     if(!mIsInUse) {
         mIsInUse = true;
-        mSprite.setPosition({-80.f, mRow * 80.f});
+        mSprite.setPosition({-80.f, mRow * 80.f + 40.f});
         mCurSpeed = mFastSpeed;
     }
 
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y);
 
     if(mSprite.getPosition().x > 1280.0f) {
-       mSprite.setPosition({1280.0f, mRow * 80.f});
+       mSprite.setPosition({1320.f, mRow * 80.f + 40.f});
        mCurSpeed = 0.0f;
        mIsInUse = false;
        return noObs;

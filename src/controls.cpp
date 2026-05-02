@@ -69,6 +69,7 @@ Controls::Controls() {
 screenState Controls::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mMenu.handleInput(event, window)){
+        mMenu.setButtonState(normal);
         return menu;
     }
 

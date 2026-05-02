@@ -73,13 +73,26 @@ screenState Menu::handleInput(sf::Event& event, sf::RenderWindow& window) {
     if (mPlay.handleInput(event, window) || 
         (event.type == sf::Event::KeyPressed &&
         event.key.code == sf::Keyboard::Space))
+    {
+        mPlay.setButtonState(normal);
         return play;
+    }
+        
     else if (mControls.handleInput(event, window))
+    {
+        mControls.setButtonState(normal);
         return controls;
+    }
     else if (mSkins.handleInput(event, window))
+    {
+        mSkins.setButtonState(normal);
         return skins;
+    }
     else 
+    {
         return menu;
+    }
+        
 }
 
 /**

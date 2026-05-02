@@ -53,32 +53,35 @@ Skins::Skins()
     mCurrentSkinText.setPosition({500,170});
     mCurrentSkinText.setFillColor(sf::Color::White);
 
-    mSkin1.setPosition({360, 200});
+    mSkin1.setScale(1.7, 1.7);
+    mSkin1.setPosition({560, 250});
 
     mSkin1Button.setText("Alien");
-    mSkin1Button.setPosition({500, 400});
-    mSkin1Button.setSize({320, 120});;
+    mSkin1Button.setPosition({640, 540});
+    mSkin1Button.setSize({400, 120});;
     mSkin1Button.setColorTextNormal(sf::Color::White);
-    mSkin1Button.setTextSize(23);
-    mSkin1Button.setTextPosition({525,415});
+    mSkin1Button.setTextSize(40);
+    mSkin1Button.setTextPosition({730,545});
 
-    mSkin2.setPosition({100, 200});
+    mSkin2.setScale(1.7, 1.7);
+    mSkin2.setPosition({155, 250});
 
     mSkin2Button.setText("Astronaut");
-    mSkin2Button.setPosition({200, 400});
-    mSkin2Button.setSize({240, 60});
+    mSkin2Button.setPosition({230, 540});
+    mSkin2Button.setSize({400, 120});
     mSkin2Button.setColorTextNormal(sf::Color::White);
-    mSkin2Button.setTextSize(23);
-    mSkin2Button.setTextPosition({424,415});
+    mSkin2Button.setTextSize(40);
+    mSkin2Button.setTextPosition({425,545});
 
-    mSkin3.setPosition({600, 200});
+    mSkin3.setScale(1.7, 1.7);
+    mSkin3.setPosition({980, 250});
 
     mSkin3Button.setText("Dog");
-    mSkin3Button.setPosition({650, 400});
-    mSkin3Button.setSize({240, 60});
+    mSkin3Button.setPosition({1050, 540});
+    mSkin3Button.setSize({400, 120});
     mSkin3Button.setColorTextNormal(sf::Color::White);
-    mSkin3Button.setTextSize(23);
-    mSkin3Button.setTextPosition({740,415});
+    mSkin3Button.setTextSize(40);
+    mSkin3Button.setTextPosition({1110,545});
 
     mExitButton.setText("Back");
     mExitButton.setPosition({100, 65});
@@ -109,6 +112,7 @@ screenState Skins::handleInput(sf::Event& event,  sf::RenderWindow& mWindow)
     }
     else if (mExitButton.handleInput(event, mWindow))
     {
+        mExitButton.setButtonState(normal);
         return menu;
     }
     return skins;
