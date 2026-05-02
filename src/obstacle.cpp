@@ -17,7 +17,7 @@
  * @return false 
  */
 bool Obstacle::checkIfInCharColumn() { 
-    if(1140.f < mSprite.getPosition().x && mSprite.getPosition().x < 1260.f)
+    if(1180.f < mSprite.getPosition().x && mSprite.getPosition().x < 1300.f)
         return true;
     else 
         return false;

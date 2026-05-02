@@ -173,6 +173,7 @@ void Button::setText(std::string s)
  */
 void Button::update()
 {
+    
     switch (mBtnState)
     {
     case normal:
@@ -210,6 +211,7 @@ bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
             mBtnState = state::normal;
         }
     }
+    
     if (e.type == sf::Event::MouseButtonPressed)
     {
         if(e.mouseButton.button==sf::Mouse::Left)
@@ -224,6 +226,7 @@ bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
             }
         }
     }
+
     if (e.type == sf::Event::MouseButtonReleased)
     {
         if (e.mouseButton.button==sf::Mouse::Left)
@@ -239,8 +242,15 @@ bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
             }
         }
     }
+
+    
     return false;
     
+}
+
+void Button::setButtonState(sf::Uint32 state)
+{
+    mBtnState = state;
 }
     
 /**
