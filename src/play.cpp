@@ -25,12 +25,14 @@ Play::Play() {
 
     mBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0, 0});
-
-    // mBubExists = false;
 }
 
-void Play::setPlayerSkin(std::string file)
-{
+/**
+ * @brief set the skin of the character object
+ * 
+ * @param file 
+ */
+void Play::setPlayerSkin(std::string file) {
     mCharacter.setSkin(file);
 }
 
@@ -52,30 +54,11 @@ void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
  */
 screenState Play::update(double dt) {
     mCharacter.update();
+    mBubble.update(dt);
 
     // Update each row
     for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
-
-    // // Check each row if a bubble exists
-    // // mBubExists = false;
-    // for(int i = 0; i < 9; i++)
-    //     if(mRow[i].getObsType() == bubObs)
-    //         mBubExists = true;
-
-    // // If a bubble exists, set all rows mVars to true
-    // if(mBubExists)
-    //     for(int i = 0; i < 9; i++)
-    //         mRow[i].setBubExists(true);
-    // else
-    //     for(int i = 0; i < 9; i++)
-    //         mRow[i].setBubExists(false);
-    
-    // if(mRow[mCharacter.getRow()].getObsType() == bubObs) 
-    //     if(!mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
-    //         return menu;        
-    // else 
-    //     return play;
 
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
         return menu;        
@@ -91,6 +74,9 @@ screenState Play::update(double dt) {
 void Play::render(sf::RenderWindow& window) {
     window.draw(mBackground);
     window.draw(mCharacter);
+    
+    mBubble.render(window);
+
     for(int i = 0; i < 9; i++) 
         mRow[i].render(window);
 }
@@ -100,6 +86,7 @@ void Play::render(sf::RenderWindow& window) {
  */
 void Play::reset() {
     mCharacter.reset();
+    mBubble.reset();
     for(int i = 0; i < 9; i++) 
         mRow[i].reset();
 }

@@ -15,7 +15,6 @@ public:
     ~slowObstacle() {};
 
     obsType update(double dt);
-    void render(sf::RenderWindow& window);
 
 private:
     float mSlowSpeed = 750.0f;

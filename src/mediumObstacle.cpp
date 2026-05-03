@@ -45,7 +45,7 @@ obsType mediumObstacle::update(double dt)
 
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y);
 
-    if(mSprite.getPosition().x > 1280.f) {
+    if(mSprite.getPosition().x > 1320.f) {
         mSprite.setPosition({1320.f, mRow * 80.f + 40.f});
         mCurSpeed = 0.0f;
         mIsInUse = false;
@@ -53,13 +53,4 @@ obsType mediumObstacle::update(double dt)
     }
 
     return medObs;
-}
-
-/**
- * @brief Draw sprite to the window
- * 
- * @param window 
- */
-void mediumObstacle::render(sf::RenderWindow& window) {
-    window.draw(mSprite);
 }

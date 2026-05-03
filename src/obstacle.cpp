@@ -39,3 +39,12 @@ void Obstacle::setRow(int row) {
 void Obstacle::reset() {
     mSprite.setPosition(1320.f, mRow * 80.f);
 }
+
+/**
+ * @brief Draw sprite to the window
+ * 
+ * @param window 
+ */
+void Obstacle::render(sf::RenderWindow& window) {
+    window.draw(mSprite);
+}

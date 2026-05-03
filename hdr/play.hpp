@@ -14,6 +14,7 @@
 #include "../hdr/character.hpp"
 #include "../hdr/row.hpp"
 #include "../hdr/menu.hpp"
+#include "../hdr/bubble.hpp"
 
 class Play {
 public:
@@ -31,6 +32,6 @@ private:
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
+    Bubble mBubble;
     Row mRow[9];
-    // bool mBubExists = false;
 };
