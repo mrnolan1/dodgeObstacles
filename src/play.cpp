@@ -22,13 +22,13 @@ Play::Play() {
     
     mAirText.setFont(mFont);
     mAirText.setCharacterSize(30);
-    mAirText.setPosition({40, 100});
+    mAirText.setPosition({17, 50});
     uint8_t color = 255.0;
     mAirText.setFillColor({color, color, color, color});
     
     mScoreText.setFont(mFont);
     mScoreText.setCharacterSize(30);
-    mScoreText.setPosition({40, 60});
+    mScoreText.setPosition({17, 10});
     mScoreText.setFillColor({color, color, color, color});
     
     for(int i = 0; i < 9; i++)
@@ -83,14 +83,14 @@ screenState Play::update(double dt) {
         return menu;
 
     std::ostringstream mAirSS;
-    mAirSS << "Air: " << std::fixed << std::setprecision(4) << mAir;
+    mAirSS << "Air: " << std::fixed << std::setprecision(2) << mAir;
     std::string mAirStr = mAirSS.str();
     mAirText.setString(mAirStr);
 
     mScore += dt;
 
     std::ostringstream mScoreSS;
-    mScoreSS << "Score: " << std::fixed << std::setprecision(4) << mScore;
+    mScoreSS << "Score: " << std::fixed << std::setprecision(2) << mScore;
     std::string mScoreStr = mScoreSS.str();
     mScoreText.setString(mScoreStr);
 
