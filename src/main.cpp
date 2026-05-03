@@ -4,6 +4,7 @@
  * @brief Main: create a Game to call functions with created window
  * @date 2026-03-17 
  */ 
+
 #include <SFML/Graphics.hpp> 
 #include <iostream> 
 #include "../hdr/game.hpp" 

@@ -45,7 +45,7 @@ obsType slowObstacle::update(double dt) {
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y); 
     mSprite.setRotation(mSprite.getRotation()+250.f*dt);
     
-    if(mSprite.getPosition().x > 1280.f) {
+    if(mSprite.getPosition().x > 1320.f) {
         mSprite.setPosition({1320.f, mRow * 80.f + 40.f}); 
         mCurSpeed = 0.0f; 
         mIsInUse = false; 
@@ -53,13 +53,4 @@ obsType slowObstacle::update(double dt) {
     }
 
     return slowObs;
-}
-
-/**
- * @brief Draw sprite to the window
- * 
- * @param window 
- */
-void slowObstacle::render(sf::RenderWindow& window) {
-    window.draw(mSprite);
 }

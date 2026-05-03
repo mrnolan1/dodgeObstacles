@@ -15,6 +15,22 @@
  *          Set background (error if not exist)
  */
 Play::Play() {
+    if (!mFont.loadFromFile("ast/SPACE.ttf")) {
+        std::cout<<"Error opening file\n";
+        exit(2);
+    }
+    
+    mAirText.setFont(mFont);
+    mAirText.setCharacterSize(30);
+    mAirText.setPosition({40, 100});
+    uint8_t color = 255.0;
+    mAirText.setFillColor({color, color, color, color});
+    
+    mScoreText.setFont(mFont);
+    mScoreText.setCharacterSize(30);
+    mScoreText.setPosition({40, 60});
+    mScoreText.setFillColor({color, color, color, color});
+    
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
@@ -25,12 +41,14 @@ Play::Play() {
 
     mBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0, 0});
-
-    // mBubExists = false;
 }
 
-void Play::setPlayerSkin(std::string file)
-{
+/**
+ * @brief set the skin of the character object
+ * 
+ * @param file 
+ */
+void Play::setPlayerSkin(std::string file) {
     mCharacter.setSkin(file);
 }
 
@@ -52,30 +70,29 @@ void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
  */
 screenState Play::update(double dt) {
     mCharacter.update();
+    mBubble.update(dt);
 
     // Update each row
     for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
 
-    // // Check each row if a bubble exists
-    // // mBubExists = false;
-    // for(int i = 0; i < 9; i++)
-    //     if(mRow[i].getObsType() == bubObs)
-    //         mBubExists = true;
+    mAir -= dt;
+    if(mBubble.checkIfInCharColumn(mCharacter.getRow()))
+        mAir = 10;
+    if(mAir < 0) 
+        return menu;
 
-    // // If a bubble exists, set all rows mVars to true
-    // if(mBubExists)
-    //     for(int i = 0; i < 9; i++)
-    //         mRow[i].setBubExists(true);
-    // else
-    //     for(int i = 0; i < 9; i++)
-    //         mRow[i].setBubExists(false);
-    
-    // if(mRow[mCharacter.getRow()].getObsType() == bubObs) 
-    //     if(!mRow[mCharacter.getRow()].eachCheckIfInCharColumn())
-    //         return menu;        
-    // else 
-    //     return play;
+    std::ostringstream mAirSS;
+    mAirSS << "Air: " << std::fixed << std::setprecision(4) << mAir;
+    std::string mAirStr = mAirSS.str();
+    mAirText.setString(mAirStr);
+
+    mScore += dt;
+
+    std::ostringstream mScoreSS;
+    mScoreSS << "Score: " << std::fixed << std::setprecision(4) << mScore;
+    std::string mScoreStr = mScoreSS.str();
+    mScoreText.setString(mScoreStr);
 
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
         return menu;        
@@ -91,15 +108,24 @@ screenState Play::update(double dt) {
 void Play::render(sf::RenderWindow& window) {
     window.draw(mBackground);
     window.draw(mCharacter);
+    
+    mBubble.render(window);
+
     for(int i = 0; i < 9; i++) 
         mRow[i].render(window);
+
+    window.draw(mAirText);
+    window.draw(mScoreText);
 }
 
 /**
  * @brief Call reset functions when a new game starts on character and all obstacles
  */
 void Play::reset() {
+    mAir = 10.0;
+    mScore = 0.0;
     mCharacter.reset();
+    mBubble.reset();
     for(int i = 0; i < 9; i++) 
         mRow[i].reset();
 }

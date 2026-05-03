@@ -13,7 +13,6 @@
 #include "../hdr/slowObstacle.hpp"
 #include "../hdr/mediumObstacle.hpp"
 #include "../hdr/fastObstacle.hpp"
-#include "../hdr/bubbleObstacle.hpp"
 
 // #include "../hdr/play.hpp"
 
@@ -35,11 +34,8 @@ public:
 
 private:
     int mRowVal = -1;
-    obsType mObsType;
+    obsType mObsType = noObs;
     slowObstacle mSlowObs;
     mediumObstacle mMedObs;
     fastObstacle mFastObs;
-    bubbleObstacle mBubObs;
-
-    // bool mBubExists = false;
 };

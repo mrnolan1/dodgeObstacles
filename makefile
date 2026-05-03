@@ -25,7 +25,7 @@ runTest: exe/test
 
 
 
-exe/game: obj/main.o obj/bubbleObstacle.o obj/button.o obj/character.o obj/fastObstacle.o obj/game.o obj/controls.o obj/mediumObstacle.o obj/menu.o obj/obstacle.o obj/play.o obj/row.o obj/skins.o obj/slowObstacle.o | exe
+exe/game: obj/main.o obj/bubble.o obj/button.o obj/character.o obj/fastObstacle.o obj/game.o obj/controls.o obj/mediumObstacle.o obj/menu.o obj/obstacle.o obj/play.o obj/row.o obj/skins.o obj/slowObstacle.o | exe
 	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
 
 
@@ -34,10 +34,10 @@ exe/game: obj/main.o obj/bubbleObstacle.o obj/button.o obj/character.o obj/fastO
 
 
 
-obj/main.o: src/main.cpp hdr/bubbleObstacle.hpp hdr/button.hpp hdr/character.hpp hdr/fastObstacle.hpp hdr/game.hpp hdr/controls.hpp hdr/mediumObstacle.hpp hdr/menu.hpp hdr/obstacle.hpp hdr/play.hpp hdr/row.hpp hdr/skins.hpp hdr/slowObstacle.hpp | obj
+obj/main.o: src/main.cpp hdr/bubble.hpp hdr/button.hpp hdr/character.hpp hdr/fastObstacle.hpp hdr/game.hpp hdr/controls.hpp hdr/mediumObstacle.hpp hdr/menu.hpp hdr/obstacle.hpp hdr/play.hpp hdr/row.hpp hdr/skins.hpp hdr/slowObstacle.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/bubbleObstacle.o: src/bubbleObstacle.cpp hdr/bubbleObstacle.hpp | obj
+obj/bubble.o: src/bubble.cpp hdr/bubble.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
 obj/button.o: src/button.cpp hdr/button.hpp | obj

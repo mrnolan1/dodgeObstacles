@@ -44,7 +44,7 @@ obsType fastObstacle::update(double dt) {
 
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y);
 
-    if(mSprite.getPosition().x > 1280.0f) {
+    if(mSprite.getPosition().x > 1320.0f) {
        mSprite.setPosition({1320.f, mRow * 80.f + 40.f});
        mCurSpeed = 0.0f;
        mIsInUse = false;
@@ -52,13 +52,4 @@ obsType fastObstacle::update(double dt) {
     }
 
     return fastObs;
-}
-
-/**
- * @brief Draw sprite to the window
- * 
- * @param window 
- */
-void fastObstacle::render(sf::RenderWindow& window) {
-    window.draw(mSprite); //draw sprite to window
 }

@@ -10,7 +10,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-enum obsType {noObs, slowObs, medObs, fastObs, bubObs};
+enum obsType {noObs, slowObs, medObs, fastObs};
 
 class Obstacle {
 public:
@@ -18,14 +18,14 @@ public:
     virtual ~Obstacle() {};
 
     virtual obsType update(double dt) = 0;
-    virtual void render(sf::RenderWindow& window) = 0;
+    void render(sf::RenderWindow& window);
 
     bool checkIfInCharColumn(); 
     void setRow(int row);
     void reset();
 
 protected:
-    float mCurSpeed;
+    float mCurSpeed = 0.f;
 
     sf::Sprite mSprite;
     sf::Texture mTexture;

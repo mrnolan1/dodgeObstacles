@@ -26,6 +26,6 @@ public:
 
 private:
     int mRow = -1;
-    sf::Sprite mCharacter;
+    sf::Sprite mSprite;
     sf::Texture mTexture;
 };

@@ -14,6 +14,9 @@
 #include "../hdr/character.hpp"
 #include "../hdr/row.hpp"
 #include "../hdr/menu.hpp"
+#include "../hdr/bubble.hpp"
+#include <sstream>
+#include <iomanip>
 
 class Play {
 public:
@@ -28,9 +31,16 @@ public:
     void reset();
 
 private:
+    sf::Font mFont;
+    sf::Text mAirText;
+    sf::Text mScoreText;
+
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
+    Bubble mBubble;
     Row mRow[9];
-    // bool mBubExists = false;
+
+    double mAir = 10.0;
+    double mScore = 0.0;
 };

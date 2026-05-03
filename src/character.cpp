@@ -17,8 +17,9 @@ Character::Character() {
         std::cout<<"Error opening file\n";
         exit(1);
     }
-    mCharacter.setTexture(mTexture); //set sprite to character image
-    mCharacter.setScale(80.f/100, 80.f/100);
+    mSprite.setTexture(mTexture); //set sprite to character image
+    mSprite.setScale(80.f/100, 80.f/100);
+    mSprite.setOrigin({50,50});
     mRow = 4; //starting row is center of screen
 }
 
@@ -41,7 +42,7 @@ void Character::handleInput(sf::Event& event, sf::RenderWindow& window) {
  * @brief Hand update (set position off of current row value)
  */
 void Character::update() {
-    mCharacter.setPosition(1200, (80*mRow));
+    mSprite.setPosition(1240, (80.f * mRow + 40.f));
 }
 
 /**
@@ -51,7 +52,7 @@ void Character::update() {
  * @param states 
  */
 void Character::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(mCharacter);
+    target.draw(mSprite);
 }
 
 /**

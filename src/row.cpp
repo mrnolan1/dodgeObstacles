@@ -7,13 +7,7 @@
 
 #include "../hdr/row.hpp"
 
-/**
- * @brief Construct a new Row::Row object
- *          Set current obsType to noObs
- */
-Row::Row() {
-    mObsType = noObs;
-}
+Row::Row() {}
 
 /**
  * @brief Handle updating the "active" obstacle of this row
@@ -37,11 +31,6 @@ void Row::update(double dt) {
             mObsType = mFastObs.update(dt);
             break;
         }
-        case bubObs: {
-            mObsType = mBubObs.update(dt);
-            mBubObs.displayPosition();
-            break;
-        }
     }
 }
 
@@ -54,15 +43,6 @@ void Row::render(sf::RenderWindow& window) {
     mSlowObs.render(window);
     mMedObs.render(window);
     mFastObs.render(window);
-    mBubObs.render(window);
-}
-
-// void Row::setBubExists(bool doesIt) {
-//     mBubExists = doesIt;
-// }
-
-obsType Row::getObsType() {
-    return mObsType;
 }
 
 /**
@@ -75,7 +55,6 @@ void Row::setRow(int row) {
     mSlowObs.setRow(row);
     mMedObs.setRow(row);
     mFastObs.setRow(row);
-    mBubObs.setRow(row);
 }
 
 /**
@@ -90,13 +69,11 @@ obsType Row::randomObsType(double dt) {
     int rand = dist(gen);
 
     if(rand == 1)
-        return bubObs;
-    // else if(rand > 10 && rand < 20)
-    //     return slowObs; 
-    // else if(rand > 20 && rand < 30)
-    //     return medObs;
-    // else if(rand > 30 && rand < 40)
-    //     return fastObs;
+        return slowObs; 
+    else if(rand == 2)
+        return medObs;
+    else if(rand == 3)
+        return fastObs;
     else
         return noObs;
 }
@@ -123,5 +100,4 @@ void Row::reset() {
     mSlowObs.reset();
     mMedObs.reset();
     mFastObs.reset();
-    mBubObs.reset();
 }
