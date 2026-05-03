@@ -26,14 +26,14 @@ public:
     void setPlayerSkin(std::string file);
     void handleInput(sf::Event& event, sf::RenderWindow& window);
     screenState update(double dt);
-    void oxygenUpdate(double dt);
     void render(sf::RenderWindow& window);
 
     void reset();
 
 private:
     sf::Font mFont;
-    sf::Text mTitle;
+    sf::Text mAirText;
+    sf::Text mScoreText;
 
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
@@ -41,6 +41,6 @@ private:
     Bubble mBubble;
     Row mRow[9];
 
-    double mOxygen = 10.0;
-    std::string mOxCnt = "Air: 10.000";
+    double mAir = 10.0;
+    double mScore = 0.0;
 };

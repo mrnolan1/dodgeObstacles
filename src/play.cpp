@@ -19,11 +19,17 @@ Play::Play() {
         std::cout<<"Error opening file\n";
         exit(2);
     }
-    mTitle.setFont(mFont);
-    mTitle.setCharacterSize(30);
-    mTitle.setPosition({40, 100});
+    
+    mAirText.setFont(mFont);
+    mAirText.setCharacterSize(30);
+    mAirText.setPosition({40, 100});
     uint8_t color = 255.0;
-    mTitle.setFillColor({color, color, color, color});
+    mAirText.setFillColor({color, color, color, color});
+    
+    mScoreText.setFont(mFont);
+    mScoreText.setCharacterSize(30);
+    mScoreText.setPosition({40, 60});
+    mScoreText.setFillColor({color, color, color, color});
     
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
@@ -70,26 +76,28 @@ screenState Play::update(double dt) {
     for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
 
-    oxygenUpdate(dt);
+    mAir -= dt;
     if(mBubble.checkIfInCharColumn(mCharacter.getRow()))
-        mOxygen = 10;
-    if(mOxygen < 0)
+        mAir = 10;
+    if(mAir < 0) 
         return menu;
 
-    std::ostringstream ss;
-    ss << "Air: " << std::fixed << std::setprecision(4) << mOxygen;
-    mOxCnt = ss.str();
-    mTitle.setString(mOxCnt);
+    std::ostringstream mAirSS;
+    mAirSS << "Air: " << std::fixed << std::setprecision(4) << mAir;
+    std::string mAirStr = mAirSS.str();
+    mAirText.setString(mAirStr);
+
+    mScore += dt;
+
+    std::ostringstream mScoreSS;
+    mScoreSS << "Score: " << std::fixed << std::setprecision(4) << mScore;
+    std::string mScoreStr = mScoreSS.str();
+    mScoreText.setString(mScoreStr);
 
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
         return menu;        
     } else 
         return play;
-}
-
-void Play::oxygenUpdate(double dt) {
-    mOxygen -= dt;
-    std::cout << mOxygen << '\n';
 }
 
 /**
@@ -106,14 +114,16 @@ void Play::render(sf::RenderWindow& window) {
     for(int i = 0; i < 9; i++) 
         mRow[i].render(window);
 
-    window.draw(mTitle);
+    window.draw(mAirText);
+    window.draw(mScoreText);
 }
 
 /**
  * @brief Call reset functions when a new game starts on character and all obstacles
  */
 void Play::reset() {
-    mOxygen = 10;
+    mAir = 10.0;
+    mScore = 0.0;
     mCharacter.reset();
     mBubble.reset();
     for(int i = 0; i < 9; i++) 
