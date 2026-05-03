@@ -15,6 +15,16 @@
  *          Set background (error if not exist)
  */
 Play::Play() {
+    if (!mFont.loadFromFile("ast/SPACE.ttf")) {
+        std::cout<<"Error opening file\n";
+        exit(2);
+    }
+    mTitle.setFont(mFont);
+    mTitle.setCharacterSize(20);
+    mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
+    mTitle.setPosition({640, 160});
+    mTitle.setFillColor({0,0,0,0});
+    
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
 
@@ -60,10 +70,26 @@ screenState Play::update(double dt) {
     for(int i = 0; i < 9; i++)
         mRow[i].update(dt);
 
+    oxygenUpdate(dt);
+    if(mBubble.checkIfInCharColumn(mCharacter.getRow()))
+        mOxygen = 10;
+    if(mOxygen < 0)
+        return menu;
+
+    std::ostringstream ss;
+    ss << std::fixed << std::setprecision(4) << mOxygen;
+    mOxCnt = ss.str();
+    mTitle.setString(mOxCnt);
+
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
         return menu;        
     } else 
         return play;
+}
+
+void Play::oxygenUpdate(double dt) {
+    mOxygen -= dt;
+    std::cout << mOxygen << '\n';
 }
 
 /**
@@ -85,6 +111,7 @@ void Play::render(sf::RenderWindow& window) {
  * @brief Call reset functions when a new game starts on character and all obstacles
  */
 void Play::reset() {
+    mOxygen = 10;
     mCharacter.reset();
     mBubble.reset();
     for(int i = 0; i < 9; i++) 

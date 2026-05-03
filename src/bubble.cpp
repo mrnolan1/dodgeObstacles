@@ -35,8 +35,8 @@ void Bubble::update(double dt) {
         static std::random_device rd;                   // a seed source for the random number engine
         static std::mt19937 gen(rd());                  // mersenne_twister_engine seeded with rd()
         std::uniform_int_distribution<> dist(0, 8);     // Use distrib to transform the random unsigned int
-        int rand = dist(gen);
-        mSprite.setPosition({-80.f, rand * 80.f + 40.f});
+        mRow = dist(gen);
+        mSprite.setPosition({-80.f, mRow * 80.f + 40.f});
     }
 
     mSprite.setPosition(mSprite.getPosition().x + mBubSpeed*dt, mSprite.getPosition().y);
@@ -51,7 +51,17 @@ void Bubble::render(sf::RenderWindow& window) {
     window.draw(mSprite); //draw sprite to window
 }
 
-    // bool checkIfInCharColumn(); 
 void Bubble::reset() {
     mSprite.setPosition(1320.f, 0.f);
+}
+
+bool Bubble::checkIfInCharColumn(int charRow) { 
+    if((1160.f < mSprite.getPosition().x && mSprite.getPosition().x < 1320.f) 
+        && (mRow == charRow)) {
+            
+        mSprite.setPosition(mSprite.getPosition().x + 160.f, mSprite.getPosition().y);
+        return true;
+    } else {
+        return false;
+    }
 }

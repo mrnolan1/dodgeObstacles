@@ -18,10 +18,11 @@ public:
     void update(double dt);
     void render(sf::RenderWindow& window);
 
-    bool checkIfInCharColumn(); 
+    bool checkIfInCharColumn(int charRow); 
     void reset();
 private:
     float mBubSpeed = 500.0f;
+    int mRow = -1;
     sf::Sprite mSprite;
     sf::Texture mTexture;
 };

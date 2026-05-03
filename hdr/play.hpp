@@ -15,6 +15,8 @@
 #include "../hdr/row.hpp"
 #include "../hdr/menu.hpp"
 #include "../hdr/bubble.hpp"
+#include <sstream>
+#include <iomanip>
 
 class Play {
 public:
@@ -24,14 +26,21 @@ public:
     void setPlayerSkin(std::string file);
     void handleInput(sf::Event& event, sf::RenderWindow& window);
     screenState update(double dt);
+    void oxygenUpdate(double dt);
     void render(sf::RenderWindow& window);
 
     void reset();
 
 private:
+    sf::Font mFont;
+    sf::Text mTitle;
+
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;
     Character mCharacter;
     Bubble mBubble;
     Row mRow[9];
+
+    double mOxygen = 10.0;
+    std::string mOxCnt = "10.000";
 };
