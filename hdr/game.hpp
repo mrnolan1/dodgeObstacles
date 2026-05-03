@@ -13,6 +13,7 @@
 #include "../hdr/play.hpp"
 #include "../hdr/skins.hpp"
 #include "../hdr/controls.hpp"
+#include "../hdr/over.hpp"
 
 class Game {
 public:
@@ -27,4 +28,5 @@ private:
     Play mPlayScreen;
     Controls mControlsScreen;
     Skins mSkinsScreen;
+    Over mOverScreen;
 };

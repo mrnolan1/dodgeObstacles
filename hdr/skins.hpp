@@ -2,18 +2,13 @@
  * @file skins.hpp
  * @author your name (you@domain.com)
  * @brief 
- * @version 0.1
  * @date 2026-04-04
- * 
- * @copyright Copyright (c) 2026
- * 
  */
 #ifndef SKINS_HPP
 #define SKINS_HPP
 
 #include "button.hpp"
 #include "menu.hpp"
-#include "play.hpp"
 #include <SFML/Graphics.hpp>
 
 

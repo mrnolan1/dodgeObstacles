@@ -89,8 +89,6 @@ screenState Play::update(double dt) {
     mAir -= dt;
     if(mBubble.checkIfInCharColumn(mCharacter.getRow()))
         mAir = 9.0;
-    if(mAir < 0) 
-        return menu;
 
     double airLvl = (mAir/9)*164.0;
     mAirBar.setSize(sf::Vector2f(airLvl, 9.f));
@@ -103,8 +101,10 @@ screenState Play::update(double dt) {
     std::string mScoreStr = mScoreSS.str();
     mScoreText.setString(mScoreStr);
 
+    if(mAir < 0) 
+        return over;
     if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
-        return menu;        
+        return over;        
     } else 
         return play;
 }

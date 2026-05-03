@@ -11,11 +11,12 @@
 #include "button.hpp"
 #include <SFML/Graphics.hpp>
 
-enum screenState {menu, play, controls, skins};
+enum screenState {menu, play, controls, skins, over};
 
 class Menu {
 public:
     Menu();
+    ~Menu() {};
 
     screenState handleInput(sf::Event& event, sf::RenderWindow& mWindow);
     void update(double dt);

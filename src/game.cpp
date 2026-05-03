@@ -63,6 +63,9 @@ void Game::update(double dt) {
             mPlayScreen.setPlayerSkin(mSkinsScreen.getSkinType());
             mSkinsScreen.update();
             break;
+        case over:
+            mOverScreen.update();
+            break;
     }
 }
 
@@ -86,6 +89,9 @@ void Game::render(sf::RenderWindow& window, double dt) {
             break;
         case skins:
             mSkinsScreen.render(window);
+            break;
+        case over:
+            mOverScreen.render(window);
             break;
     }
     window.display();
