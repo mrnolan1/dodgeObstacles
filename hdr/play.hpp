@@ -32,7 +32,9 @@ public:
 
 private:
     sf::Font mFont;
-    sf::Text mAirText;
+    sf::Text mAirStr;
+    sf::RectangleShape mAirBar; 
+    sf::RectangleShape mAirFrame;
     sf::Text mScoreText;
 
     sf::Sprite mBackground;
@@ -41,6 +43,6 @@ private:
     Bubble mBubble;
     Row mRow[9];
 
-    double mAir = 10.0;
+    double mAir = 9.0;
     double mScore = 0.0;
 };

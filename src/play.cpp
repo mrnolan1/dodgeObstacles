@@ -20,12 +20,22 @@ Play::Play() {
         exit(2);
     }
     
-    mAirText.setFont(mFont);
-    mAirText.setCharacterSize(30);
-    mAirText.setPosition({17, 50});
     uint8_t color = 255.0;
-    mAirText.setFillColor({color, color, color, color});
+
+    mAirStr.setFont(mFont);
+    mAirStr.setCharacterSize(30);
+    mAirStr.setPosition({17, 50});
+    mAirStr.setFillColor({color, color, color, color});
+    mAirStr.setString("Air ");
     
+    mAirBar.setPosition({108.f, 64.f});  
+ 
+    mAirFrame.setFillColor({color, color, color, 0}); 
+    mAirFrame.setPosition({105.f, 61.f});  
+    mAirFrame.setSize(sf::Vector2f(170.f, 15.f));
+    mAirFrame.setOutlineThickness(3.f);
+    mAirFrame.setOutlineColor({color, color, color, color});
+
     mScoreText.setFont(mFont);
     mScoreText.setCharacterSize(30);
     mScoreText.setPosition({17, 10});
@@ -78,19 +88,18 @@ screenState Play::update(double dt) {
 
     mAir -= dt;
     if(mBubble.checkIfInCharColumn(mCharacter.getRow()))
-        mAir = 10;
+        mAir = 9.0;
     if(mAir < 0) 
         return menu;
 
-    std::ostringstream mAirSS;
-    mAirSS << "Air: " << std::fixed << std::setprecision(2) << mAir;
-    std::string mAirStr = mAirSS.str();
-    mAirText.setString(mAirStr);
+    double airLvl = (mAir/9)*164.0;
+    mAirBar.setSize(sf::Vector2f(airLvl, 9.f));
+    mAirBar.setFillColor(mAir < 3.0 ? sf::Color::Red : sf::Color::White);
 
     mScore += dt;
 
     std::ostringstream mScoreSS;
-    mScoreSS << "Score: " << std::fixed << std::setprecision(2) << mScore;
+    mScoreSS << "Score " << std::setprecision(mScore < 1 ? 4 : 5) << mScore;
     std::string mScoreStr = mScoreSS.str();
     mScoreText.setString(mScoreStr);
 
@@ -114,7 +123,10 @@ void Play::render(sf::RenderWindow& window) {
     for(int i = 0; i < 9; i++) 
         mRow[i].render(window);
 
-    window.draw(mAirText);
+    window.draw(mAirStr);
+    
+    window.draw(mAirFrame);
+    window.draw(mAirBar);
     window.draw(mScoreText);
 }
 
@@ -122,7 +134,7 @@ void Play::render(sf::RenderWindow& window) {
  * @brief Call reset functions when a new game starts on character and all obstacles
  */
 void Play::reset() {
-    mAir = 10.0;
+    mAir = 9.0;
     mScore = 0.0;
     mCharacter.reset();
     mBubble.reset();
