@@ -42,5 +42,5 @@ private:
     Row mRow[9];
 
     double mOxygen = 10.0;
-    std::string mOxCnt = "10.000";
+    std::string mOxCnt = "Air: 10.000";
 };

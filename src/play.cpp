@@ -20,10 +20,10 @@ Play::Play() {
         exit(2);
     }
     mTitle.setFont(mFont);
-    mTitle.setCharacterSize(20);
-    mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({640, 160});
-    mTitle.setFillColor({0,0,0,0});
+    mTitle.setCharacterSize(30);
+    mTitle.setPosition({40, 100});
+    uint8_t color = 255.0;
+    mTitle.setFillColor({color, color, color, color});
     
     for(int i = 0; i < 9; i++)
         mRow[i].setRow(i);
@@ -77,7 +77,7 @@ screenState Play::update(double dt) {
         return menu;
 
     std::ostringstream ss;
-    ss << std::fixed << std::setprecision(4) << mOxygen;
+    ss << "Air: " << std::fixed << std::setprecision(4) << mOxygen;
     mOxCnt = ss.str();
     mTitle.setString(mOxCnt);
 
@@ -105,6 +105,8 @@ void Play::render(sf::RenderWindow& window) {
 
     for(int i = 0; i < 9; i++) 
         mRow[i].render(window);
+
+    window.draw(mTitle);
 }
 
 /**
