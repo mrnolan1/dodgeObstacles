@@ -40,6 +40,31 @@ void Bubble::update(double dt) {
     }
 
     mSprite.setPosition(mSprite.getPosition().x + mBubSpeed*dt, mSprite.getPosition().y);
+
+    float mPulseSpeed = dt*15;
+    if(mSprite.getScale().x < 60.f/100 && mSprite.getScale().y < 60.f/100)
+    {
+        mPulse = false;
+    }
+    else if (mSprite.getScale().x > 80.f/100 && mSprite.getScale().y > 80.f/100)
+    {
+        mPulse = true;
+    }
+
+    if(mCounter % 25 == 0 && mPulse == true)
+    {
+        mSprite.setScale(mSprite.getScale().x - mPulseSpeed, mSprite.getScale().y - mPulseSpeed);
+    }
+    else if(mCounter % 25 == 0 && mPulse == false)
+    {
+        mSprite.setScale(mSprite.getScale().x + mPulseSpeed, mSprite.getScale().y + mPulseSpeed);
+    }
+
+    mCounter--;
+    if(mCounter == 0)
+    {
+        mCounter = 10000;
+    }
 }
 
 /**

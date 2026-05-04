@@ -19,12 +19,24 @@ mediumObstacle::mediumObstacle() {
         exit(1);
     }
 
+    if(!mTrailTexture.loadFromFile("ast/spaceship trail.png")) {
+        std::cout<<"Error opening file\n";
+        exit(1);
+    }
+
     mCurSpeed = mMedSpeed;
     
     mSprite.setTexture(mTexture);
     mSprite.setScale(80.f/100, 80.f/100);
     mSprite.setPosition(1320.f, mRow * 80.f + 40.f);
     mSprite.setOrigin({50,50});
+
+    mTrail.setTexture(mTrailTexture);
+    mTrail.setScale(40.f/100, 40.f/100);
+    mTrail.setOrigin({50,50});
+    mTrail.setPosition(mSprite.getPosition().x -60 , mSprite.getPosition().y);
+    mTrail.setColor({255, 255, 255, 70});
+    
 }
 
 /**
@@ -44,9 +56,18 @@ obsType mediumObstacle::update(double dt)
     }
 
     mSprite.setPosition(mSprite.getPosition().x + mCurSpeed*dt, mSprite.getPosition().y);
-
-    if(mSprite.getPosition().x > 1320.f) {
+    if(mSprite.getPosition().x == 1320.f && mSprite.getPosition().y == mRow * 80.f + 40.f)
+    {
+        mTrail.setPosition({1400.f, mRow * 80.f + 40.f});
+    }
+    else
+    {
+        mTrail.setPosition(mSprite.getPosition().x - 60, mSprite.getPosition().y);
+    }
+    
+    if(mSprite.getPosition().x > 1400.f) {
         mSprite.setPosition({1320.f, mRow * 80.f + 40.f});
+        mTrail.setPosition({1400.f, mRow * 80.f + 40.f});
         mCurSpeed = 0.0f;
         mIsInUse = false;
         return noObs;

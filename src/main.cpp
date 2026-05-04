@@ -1,7 +1,7 @@
 /** 
  * @file main.cpp 
- * @author Matthew Nolan 
- * @brief Main: create a Game to call functions with created window
+ * @author Isaiah Preston 
+ * @brief Main
  * @date 2026-03-17 
  */ 
 
