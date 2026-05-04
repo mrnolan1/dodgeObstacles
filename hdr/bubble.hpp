@@ -23,6 +23,8 @@ public:
 private:
     float mBubSpeed = 500.0f;
     int mRow = -1;
+    int mCounter = 10000;
+    bool mPulse = true;
     sf::Sprite mSprite;
     sf::Texture mTexture;
 };

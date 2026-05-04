@@ -47,4 +47,5 @@ void Obstacle::reset() {
  */
 void Obstacle::render(sf::RenderWindow& window) {
     window.draw(mSprite);
+    window.draw(mTrail);
 }

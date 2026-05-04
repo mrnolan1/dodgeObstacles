@@ -44,7 +44,6 @@ Button::Button()
 
     mTextNormal = sf::Color::Black;
     mTextHover = {0, 0, 128, 255};
-    //mTextHover = sf::Color::Transparent;
 
     mText.setFillColor(mTextNormal);
     mBtnState = normal;

@@ -8,15 +8,12 @@
  * @copyright Copyright (c) 2026
  * 
  */
-#ifndef SKINS_HPP
-#define SKINS_HPP
+#pragma once
 
 #include "button.hpp"
 #include "menu.hpp"
 #include "play.hpp"
 #include <SFML/Graphics.hpp>
-
-
 
 class Skins
 {
@@ -31,7 +28,6 @@ private:
     Button mSkin1Button;
     Button mSkin2Button;
     Button mSkin3Button;
-    sf::Sprite mCurrentSkin;
     sf::Sprite mSkin1;
     sf::Texture mSkin1Texture;
     sf::Sprite mSkin2;
@@ -50,5 +46,3 @@ private:
     std::string mSkinType;
 
 };
-
-#endif

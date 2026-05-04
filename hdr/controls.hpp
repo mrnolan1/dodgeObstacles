@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2026
  * 
  */
-#ifndef CONTROLS_HPP
-#define CONTROLS_HPP
+#pragma once
+
 #include "../hdr/menu.hpp"
 #include "../hdr/button.hpp"
 #include <iostream>
@@ -39,6 +39,3 @@ private:
     sf::Text mInstructions2;
 };
 //w move up s move down and space starts the game
-
-
-#endif // HOWTOPLAY_HPP
