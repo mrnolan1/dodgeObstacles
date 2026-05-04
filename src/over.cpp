@@ -20,61 +20,45 @@ Over::Over() {
 
     mBackground.setTexture(mBackgroundTexture);
 
-    // mTitle.setFont(mFont);
-    // mTitle.setCharacterSize(100);
-    // mTitle.setString("Skins");
-    // mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
+    mGameOver.setFont(mFont);
+    mGameOver.setString("Game Over");
+    mGameOver.setCharacterSize(80);
+    mGameOver.setOrigin(mGameOver.getGlobalBounds().width/2, mGameOver.getGlobalBounds().height/2);
+    mGameOver.setPosition({640, 50});
+
+
+    // mDiedBy.setFont(mFont);
+    // mYourScore.setFont(mFont);
+    // mHighScore.setFont(mFont);
+
     // mTitle.setPosition({640,50});
     // mTitle.setFillColor(sf::Color::White);
 
-    // mExitButton.setText("Back");
-    // mExitButton.setPosition({100, 65});
-    // mExitButton.setSize({150, 80});
-    // mExitButton.setColorTextNormal(sf::Color::White);
-    // mExitButton.setTextSize(30);
-    // mExitButton.setTextPosition({215,75}); 
-   
-
+    mMenu.setText("Menu");
+    mMenu.setPosition({635, 600});
+    mMenu.setSize({240, 100});
+    mMenu.setColorTextNormal(sf::Color::White);
+    mMenu.setTextSize(49);
+    mMenu.setTextPosition({705,600});
 }
 
-// screenState Skins::handleInput(sf::Event& event,  sf::RenderWindow& mWindow)
-// {
-//     if (mSkin1Button.handleInput(event, mWindow))
-//     {
-//         mSkinType = "ast/alien.png";
-//         mCurrentSkinText.setString("Your current skin is: Alien");
-//     }
-//     else if (mSkin2Button.handleInput(event, mWindow))
-//     {
-//         mSkinType = "ast/astronaut.png";
-//         mCurrentSkinText.setString("Your current skin is: Astronaut");
-//     }
-//     else if (mSkin3Button.handleInput(event, mWindow))
-//     {
-//         mSkinType = "ast/dog.png";
-//         mCurrentSkinText.setString("Your current skin is: Dog");
-//     }
-//     else if (mExitButton.handleInput(event, mWindow))
-//     {
-//         mExitButton.setButtonState(normal);
-//         return menu;
-//     }
-//     return skins;
+screenState Over::handleInput(sf::Event& event, sf::RenderWindow& window) {
+    if (mMenu.handleInput(event, window) || 
+        (event.type == sf::Event::KeyPressed &&
+        event.key.code == sf::Keyboard::Space)){
+        mMenu.setButtonState(normal);
+        return menu;
+    }
 
-// }
-
-// std::string Skins::getSkinType()
-// {
-//     return mSkinType;
-// }
+    return over;
+}
 
 void Over::update() {
-    mExitButton.update();
+    mMenu.update();
 }
 
-void Over::render(sf::RenderWindow& window)
-{
+void Over::render(sf::RenderWindow& window) {
     window.draw(mBackground);
-    window.draw(mExitButton);
-    // window.draw(mTitle);
+    window.draw(mMenu);
+    window.draw(mGameOver);
 }

@@ -17,19 +17,18 @@ public:
     Over();
     ~Over() {};
 
-    // screenState handleInput(sf::Event& event,  sf::RenderWindow& mWindow);
+    screenState handleInput(sf::Event& event,  sf::RenderWindow& mWindow);
     void update();
     void render(sf::RenderWindow& window);
 
 private:
-    Button mExitButton;
+    Button mMenu;
     
     sf::Font mFont;
     sf::Text mGameOver;
     sf::Text mDiedBy;
     sf::Text mYourScore;
     sf::Text mHighScore;
-    sf::Text mMenu;
 
     sf::Sprite mBackground;
     sf::Texture mBackgroundTexture;

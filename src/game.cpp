@@ -41,6 +41,9 @@ void Game::handleInput(sf::RenderWindow& window) {
             case skins:
                 mScreenState = mSkinsScreen.handleInput(event, window);
                 break;
+            case over:
+                mScreenState = mOverScreen.handleInput(event, window);
+                break;
         }
     }
 }
