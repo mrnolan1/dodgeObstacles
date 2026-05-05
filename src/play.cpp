@@ -78,7 +78,7 @@ void Play::handleInput(sf::Event& event, sf::RenderWindow& window) {
  * 
  * @return screenState 
  */
-screenState Play::update(double dt) {
+screenState Play::update(double dt, Over& overScreen) {
     mCharacter.update();
     mBubble.update(dt);
 
@@ -101,9 +101,13 @@ screenState Play::update(double dt) {
     std::string mScoreStr = mScoreSS.str();
     mScoreText.setString(mScoreStr);
 
-    if(mAir < 0) 
+    if(mAir < 0) {
+        overScreen.setScreen(suffocation, mScore);
         return over;
-    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn()) {
+    }
+    causeOfDeath codo;
+    if(mRow[mCharacter.getRow()].eachCheckIfInCharColumn(codo)) {
+        overScreen.setScreen(codo, mScore);
         return over;        
     } else 
         return play;

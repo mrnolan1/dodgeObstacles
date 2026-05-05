@@ -35,6 +35,9 @@ void Game::handleInput(sf::RenderWindow& window) {
             case play:
                 mPlayScreen.handleInput(event, window);
                 break;
+            case overSkipMenu:
+                mPlayScreen.handleInput(event, window);
+                break;
             case controls:
                 mScreenState = mControlsScreen.handleInput(event, window);
                 break;
@@ -43,6 +46,8 @@ void Game::handleInput(sf::RenderWindow& window) {
                 break;
             case over:
                 mScreenState = mOverScreen.handleInput(event, window);
+                if(mScreenState == overSkipMenu) 
+                    mPlayScreen.reset();
                 break;
         }
     }
@@ -57,7 +62,10 @@ void Game::update(double dt) {
             mMenuScreen.update(dt);
             break;
         case play:
-            mScreenState = mPlayScreen.update(dt);
+            mScreenState = mPlayScreen.update(dt, mOverScreen);
+            break;
+        case overSkipMenu:
+            mScreenState = mPlayScreen.update(dt, mOverScreen);
             break;
         case controls:
             mControlsScreen.update();
@@ -85,6 +93,9 @@ void Game::render(sf::RenderWindow& window, double dt) {
             mMenuScreen.fadeInText(dt);
             break;
         case play:
+            mPlayScreen.render(window);
+            break;
+        case overSkipMenu:
             mPlayScreen.render(window);
             break;
         case controls:

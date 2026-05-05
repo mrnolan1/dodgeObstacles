@@ -1,7 +1,7 @@
 /** 
  * @file main.cpp 
- * @author Matthew Nolan 
- * @brief Main: create a Game to call functions with created window
+ * @author Isaiah Preston 
+ * @brief Main
  * @date 2026-03-17 
  */ 
 
@@ -11,12 +11,11 @@
 
 int main() 
 { 
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Game Test"); 
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Adrift . . ."); 
     Game Game;
 
     sf::Clock clock;
 
-    //add dt later
     while (window.isOpen()) { 
         double dt = clock.restart().asSeconds();
         Game.handleInput(window); 

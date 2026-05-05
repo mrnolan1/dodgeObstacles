@@ -84,13 +84,18 @@ obsType Row::randomObsType(double dt) {
  * @return true 
  * @return false 
  */
-bool Row::eachCheckIfInCharColumn() {
-    if(mSlowObs.checkIfInCharColumn() || 
-        mMedObs.checkIfInCharColumn() ||
-        mFastObs.checkIfInCharColumn()) 
-            return true;
-    else 
-            return false;
+bool Row::eachCheckIfInCharColumn(causeOfDeath& codo) {
+    if(mSlowObs.checkIfInCharColumn()) {
+        codo = asteroid;
+        return true;
+    } else if(mMedObs.checkIfInCharColumn()) {
+        codo = spaceship;
+        return true;
+    } else if(mFastObs.checkIfInCharColumn()) {
+        codo = ufo;
+        return true;
+    } else 
+        return false;
 }
 
 /**

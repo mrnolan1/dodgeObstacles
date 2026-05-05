@@ -4,14 +4,11 @@
  * @brief 
  * @date 2026-04-04
  */
-#ifndef SKINS_HPP
-#define SKINS_HPP
+#pragma once
 
 #include "button.hpp"
 #include "menu.hpp"
 #include <SFML/Graphics.hpp>
-
-
 
 class Skins
 {
@@ -26,7 +23,6 @@ private:
     Button mSkin1Button;
     Button mSkin2Button;
     Button mSkin3Button;
-    sf::Sprite mCurrentSkin;
     sf::Sprite mSkin1;
     sf::Texture mSkin1Texture;
     sf::Sprite mSkin2;
@@ -45,5 +41,3 @@ private:
     std::string mSkinType;
 
 };
-
-#endif

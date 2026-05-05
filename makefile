@@ -94,4 +94,4 @@ exe:
 
 
 clean:
-	rm -rf obj exe
+	rm -rf obj exe ast/highscore.txt

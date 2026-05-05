@@ -10,6 +10,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <random>
+#include "../hdr/menu.hpp"
 #include "../hdr/slowObstacle.hpp"
 #include "../hdr/mediumObstacle.hpp"
 #include "../hdr/fastObstacle.hpp"
@@ -29,7 +30,7 @@ public:
 
     void setRow(int row);
     obsType randomObsType(double dt);
-    bool eachCheckIfInCharColumn();
+    bool eachCheckIfInCharColumn(causeOfDeath& codo);
     void reset();
 
 private:

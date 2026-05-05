@@ -24,6 +24,7 @@ public:
     void render(sf::RenderWindow& window, double dt);
 private:
     screenState mScreenState;
+
     Menu mMenuScreen;
     Play mPlayScreen;
     Controls mControlsScreen;

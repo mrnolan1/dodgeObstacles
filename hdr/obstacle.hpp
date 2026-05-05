@@ -29,6 +29,8 @@ protected:
 
     sf::Sprite mSprite;
     sf::Texture mTexture;
+    sf::Sprite mTrail;
+    sf::Texture mTrailTexture;
     int mRow = -1;
     bool mIsInUse = false;
 };
