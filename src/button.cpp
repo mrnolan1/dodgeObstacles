@@ -164,6 +164,7 @@ void Button::setText(std::string s)
 {
     mText.setString(s);
 }
+
 /**
  * @brief Update the screen when you hover over and click the button
  * 
@@ -190,6 +191,14 @@ void Button::update()
     }
 }
 
+/**
+ * @brief Check the event for clicking while the mouse is inside the button 
+ * 
+ * @param e 
+ * @param window 
+ * @return true 
+ * @return false 
+ */
 bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
 {
     //get position of the mouse
@@ -241,12 +250,14 @@ bool Button::handleInput(sf::Event& e, sf::RenderWindow& window)
             }
         }
     }
-
-    
     return false;
-    
 }
 
+/**
+ * @brief set the state of the button
+ * 
+ * @param state 
+ */
 void Button::setButtonState(sf::Uint32 state)
 {
     mBtnState = state;

@@ -29,8 +29,8 @@ exe/game: obj/main.o obj/bubble.o obj/button.o obj/character.o obj/fastObstacle.
 	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
 
 
-# exe/test: obj/button.o obj/character.o obj/game.o obj/controls.o obj/obstacle.o obj/play.o obj/menu.o obj/skins.o obj/test.o | exe
-# 	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
+exe/test: obj/test.o obj/catch_amalgamated.o obj/bubble.o obj/button.o obj/character.o obj/fastObstacle.o obj/game.o obj/controls.o obj/mediumObstacle.o obj/menu.o obj/obstacle.o obj/over.o obj/play.o obj/row.o obj/skins.o obj/slowObstacle.o | exe
+	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
 
 
 
@@ -79,9 +79,11 @@ obj/skins.o: src/skins.cpp hdr/skins.hpp | obj
 obj/slowObstacle.o: src/slowObstacle.cpp hdr/slowObstacle.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
-obj/test.o: src/test.cpp hdr/button.hpp hdr/character.hpp hdr/game.hpp hdr/controls.hpp hdr/obstacle.hpp hdr/play.hpp hdr/menu.hpp hdr/skins.hpp | obj
+obj/test.o: src/test.cpp src/catch_amalgamated.cpp hdr/bubble.hpp hdr/button.hpp hdr/character.hpp hdr/fastObstacle.hpp hdr/game.hpp hdr/controls.hpp hdr/mediumObstacle.hpp hdr/menu.hpp hdr/obstacle.hpp hdr/play.hpp hdr/row.hpp hdr/skins.hpp hdr/slowObstacle.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
+obj/catch_amalgamated.o:  src/catch_amalgamated.cpp  src/catch_amalgamated.hpp
+	$(CC) $(FLAGS) -c $< -o $@
 
 
 

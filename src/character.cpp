@@ -80,3 +80,13 @@ void Character::setSkin(std::string file) {
     if(!mTexture.loadFromFile(file))
         std::cerr << "Error opening skin file" << std::endl;
 }
+
+/**
+ * @brief Get the current position of the character
+ *
+ * @return sf::Vector2f Current position (used for collision detection)
+ */
+sf::Vector2f Character::getPosition()
+{
+    return mSprite.getPosition();
+}
