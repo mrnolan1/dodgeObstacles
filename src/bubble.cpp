@@ -76,10 +76,21 @@ void Bubble::render(sf::RenderWindow& window) {
     window.draw(mSprite); //draw sprite to window
 }
 
+/**
+ * @brief Position the buble off screen for the start of play
+ * 
+ */
 void Bubble::reset() {
-    mSprite.setPosition(1320.f, 0.f);
+    mSprite.setPosition(1400.f, 0.f);
 }
 
+/**
+ * @brief Return true if the character "gets" the bubble
+ * 
+ * @param charRow 
+ * @return true 
+ * @return false 
+ */
 bool Bubble::checkIfInCharColumn(int charRow) { 
     if((1160.f < mSprite.getPosition().x && mSprite.getPosition().x < 1320.f) 
         && (mRow == charRow)) {

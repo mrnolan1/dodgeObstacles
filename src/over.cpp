@@ -8,6 +8,10 @@
 #include "../hdr/over.hpp"
 #include <iomanip>
 
+/**
+ * @brief Construct a new Over:: Over object
+ * 
+ */
 Over::Over() {
     if(!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png")) {
         std::cerr << "Error loading background file" << std::endl;
@@ -41,6 +45,13 @@ Over::Over() {
     mMenu.setTextPosition({705,600});
 }
 
+/**
+ * @brief Handle user input: menu button goes to menu, space to play again
+ * 
+ * @param event 
+ * @param window 
+ * @return screenState 
+ */
 screenState Over::handleInput(sf::Event& event, sf::RenderWindow& window) {
     if (mMenu.handleInput(event, window)){
         mMenu.setButtonState(normal);
@@ -55,10 +66,20 @@ screenState Over::handleInput(sf::Event& event, sf::RenderWindow& window) {
 
 }
 
+/**
+ * @brief Update the menu button
+ * 
+ */
 void Over::update() {
     mMenu.update();
 }
 
+/**
+ * @brief One time use to set the strings of you score, high score, etc
+ * 
+ * @param cod 
+ * @param score 
+ */
 void Over::setScreen(causeOfDeath cod, double score) {
     std::string diedByStr;
     switch(cod) {
@@ -121,6 +142,11 @@ void Over::setScreen(causeOfDeath cod, double score) {
     mHighscore.setPosition({640, 430});
 }
 
+/**
+ * @brief Render the sprites to the window
+ * 
+ * @param window 
+ */
 void Over::render(sf::RenderWindow& window) {
     window.draw(mBackground);
     window.draw(mMenu);

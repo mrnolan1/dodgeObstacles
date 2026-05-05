@@ -23,6 +23,7 @@ public:
     int getRow();
     void reset();
     void setSkin(std::string file);
+    sf::Vector2f getPosition();
 
 private:
     int mRow = -1;

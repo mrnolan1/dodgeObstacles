@@ -77,7 +77,6 @@ screenState Controls::handleInput(sf::Event& event, sf::RenderWindow& window)
     return controls;
 }
 
-
 void Controls::update() {
     //update the how to play screen here
     mMenu.update();
@@ -109,4 +108,3 @@ void Controls::render(sf::RenderWindow& window) {
     window.draw(mInstructions);
     window.draw(mInstructions2);
 }
-
