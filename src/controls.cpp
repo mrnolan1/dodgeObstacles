@@ -15,27 +15,39 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-//this will be for the play class(its own seperate functions for handling inputs, rendering, and updating screen for the how to play screen)
-Controls::Controls() {
+/** 
 
+ * @brief Construct a new Controls:: Controls object 
+
+ *  
+
+ * Initializes fonts, texts, background sprites, title, instructions,  
+
+ * and the menu button. 
+
+ */ 
+Controls::Controls() {
+    //load font
     //initialize variables and load resources here
     if (!mFont.loadFromFile("ast/SPACE.ttf"))
     {
         std::cout<<"Error opening file\n";
         exit(2);
     }
+    //load background texture
     if (!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png"))
     {
         std::cout<<"Error opening background file\n";
         exit(2);
     }
+    //setup background sprites for scrolling
     mBackground.setTexture(mBackgroundTexture);
 
     mSecondBackground.setTexture(mBackgroundTexture);
     mBackground.setPosition({0,0});
     mSecondBackground.setPosition({-800, 0});
 
-
+    //Title
     mTitle.setFont(mFont);
     //choose the font size based on button size
     mTitle.setCharacterSize(60);
@@ -44,19 +56,20 @@ Controls::Controls() {
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
     mTitle.setPosition({600,125});
 
-    
+    //first instruction text
     mInstructions.setFont(mFont);
     mInstructions.setCharacterSize(25);
     mInstructions.setString("       Objective: Avoid Asteroids, Spaceships, and UFO's\n                 while collecting air bubbles to survive!");
     mInstructions.setPosition({30, 150});
 
+    //second instruction text
     mInstructions2.setString("               How to move Character:\n     Press w or up-arrow key to move up\nPress s or down-arrow key to move down \n    Press space bar to start the game\n");
     mInstructions2.setFont(mFont);
     mInstructions2.setCharacterSize(30);
     mInstructions2.setPosition({140, 280});
     
 
-    
+    //Menu button
     mMenu.setText("Menu");
     mMenu.setPosition({635, 600});
     mMenu.setSize({240, 100});
@@ -67,6 +80,19 @@ Controls::Controls() {
 
 }
 
+/** 
+
+ * @brief handle input for the controls screen 
+
+ *  
+
+ * @param event  
+
+ * @param window  
+
+ * @return screenState  
+
+ */ 
 screenState Controls::handleInput(sf::Event& event, sf::RenderWindow& window)
 {
     if (mMenu.handleInput(event, window)){
@@ -76,19 +102,36 @@ screenState Controls::handleInput(sf::Event& event, sf::RenderWindow& window)
 
     return controls;
 }
+/** 
 
+ * @brief update the controls screen every frame 
+
+ *  
+
+ * updates button visuals and background scrolling 
+
+ */ 
 void Controls::update() {
     //update the how to play screen here
     mMenu.update();
 }
+/** 
 
+ * @brief Move both the background sprites to create a scrolling effect 
+
+ *  
+
+ * creates a scrolling background affect 
+
+ */ 
 void Controls::moveBackground()
-{
+{   //first loop background
     if(mBackground.getPosition().x > 800)
     {
         mBackground.setPosition({-800,0});
         mBackgroundCounter = -800;
     }
+    //second loop background
     else if(mSecondBackground.getPosition().x > 800)
     {
         mSecondBackground.setPosition({-800,0});
@@ -100,6 +143,15 @@ void Controls::moveBackground()
     mSecondBackground.setPosition({mBackgroundCounter2, 0});
 }
 
+/** 
+
+ * @brief Render the controls screen 
+
+ *  
+
+ * @param window  
+
+ */ 
 void Controls::render(sf::RenderWindow& window) {
     window.draw(mBackground);
     window.draw(mSecondBackground);
