@@ -7,6 +7,7 @@
  */
 
 #include "../hdr/menu.hpp"
+#include <iomanip>
 
 /**
  * @brief Construct a new Menu::Menu object

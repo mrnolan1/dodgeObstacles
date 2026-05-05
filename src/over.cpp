@@ -6,6 +6,7 @@
  */
 
 #include "../hdr/over.hpp"
+#include <iomanip>
 
 Over::Over() {
     if(!mBackgroundTexture.loadFromFile("ast/spacebackgroundbigger.png")) {
