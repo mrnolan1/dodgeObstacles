@@ -35,11 +35,19 @@ void Game::handleInput(sf::RenderWindow& window) {
             case play:
                 mPlayScreen.handleInput(event, window);
                 break;
+            case overSkipMenu:
+                mPlayScreen.handleInput(event, window);
+                break;
             case controls:
                 mScreenState = mControlsScreen.handleInput(event, window);
                 break;
             case skins:
                 mScreenState = mSkinsScreen.handleInput(event, window);
+                break;
+            case over:
+                mScreenState = mOverScreen.handleInput(event, window);
+                if(mScreenState == overSkipMenu) 
+                    mPlayScreen.reset();
                 break;
         }
     }
@@ -54,7 +62,10 @@ void Game::update(double dt) {
             mMenuScreen.update(dt);
             break;
         case play:
-            mScreenState = mPlayScreen.update(dt);
+            mScreenState = mPlayScreen.update(dt, mOverScreen);
+            break;
+        case overSkipMenu:
+            mScreenState = mPlayScreen.update(dt, mOverScreen);
             break;
         case controls:
             mControlsScreen.update();
@@ -62,6 +73,9 @@ void Game::update(double dt) {
         case skins:
             mPlayScreen.setPlayerSkin(mSkinsScreen.getSkinType());
             mSkinsScreen.update();
+            break;
+        case over:
+            mOverScreen.update();
             break;
     }
 }
@@ -81,11 +95,17 @@ void Game::render(sf::RenderWindow& window, double dt) {
         case play:
             mPlayScreen.render(window);
             break;
+        case overSkipMenu:
+            mPlayScreen.render(window);
+            break;
         case controls:
             mControlsScreen.render(window);
             break;
         case skins:
             mSkinsScreen.render(window);
+            break;
+        case over:
+            mOverScreen.render(window);
             break;
     }
     window.display();

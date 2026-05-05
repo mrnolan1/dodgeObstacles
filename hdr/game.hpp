@@ -13,6 +13,7 @@
 #include "../hdr/play.hpp"
 #include "../hdr/skins.hpp"
 #include "../hdr/controls.hpp"
+#include "../hdr/over.hpp"
 
 class Game {
 public:
@@ -23,8 +24,10 @@ public:
     void render(sf::RenderWindow& window, double dt);
 private:
     screenState mScreenState;
+
     Menu mMenuScreen;
     Play mPlayScreen;
     Controls mControlsScreen;
     Skins mSkinsScreen;
+    Over mOverScreen;
 };

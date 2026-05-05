@@ -25,7 +25,7 @@ runTest: exe/test
 
 
 
-exe/game: obj/main.o obj/bubble.o obj/button.o obj/character.o obj/fastObstacle.o obj/game.o obj/controls.o obj/mediumObstacle.o obj/menu.o obj/obstacle.o obj/play.o obj/row.o obj/skins.o obj/slowObstacle.o | exe
+exe/game: obj/main.o obj/bubble.o obj/button.o obj/character.o obj/fastObstacle.o obj/game.o obj/controls.o obj/mediumObstacle.o obj/menu.o obj/obstacle.o obj/over.o obj/play.o obj/row.o obj/skins.o obj/slowObstacle.o | exe
 	$(CC) $(FLAGS) $^ -o $@ $(LDFLAGS)
 
 
@@ -64,6 +64,9 @@ obj/menu.o: src/menu.cpp hdr/menu.hpp | obj
 obj/obstacle.o: src/obstacle.cpp hdr/obstacle.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
+obj/over.o: src/over.cpp hdr/over.hpp | obj
+	$(CC) $(FLAGS) -c $< -o $@
+
 obj/play.o: src/play.cpp hdr/play.hpp | obj
 	$(CC) $(FLAGS) -c $< -o $@
 
@@ -91,4 +94,4 @@ exe:
 
 
 clean:
-	rm -rf obj exe
+	rm -rf obj exe ast/highscore.txt

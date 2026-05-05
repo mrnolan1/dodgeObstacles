@@ -9,13 +9,17 @@
 #pragma once
 
 #include "button.hpp"
+#include "fstream"
+#include "sstream"
 #include <SFML/Graphics.hpp>
 
-enum screenState {menu, play, controls, skins};
+enum screenState {menu, play, controls, skins, over, overSkipMenu};
+enum causeOfDeath {asteroid, spaceship, ufo, suffocation};
 
 class Menu {
 public:
     Menu();
+    ~Menu() {};
 
     screenState handleInput(sf::Event& event, sf::RenderWindow& mWindow);
     void update(double dt);
@@ -26,6 +30,7 @@ public:
 
 private:
     sf::Text mTitle;
+    sf::Text mHighscore;
     sf::Font mFont;
     sf::Sprite mBackground;
 

@@ -15,6 +15,7 @@
 #include "../hdr/row.hpp"
 #include "../hdr/menu.hpp"
 #include "../hdr/bubble.hpp"
+#include "../hdr/over.hpp"
 #include <sstream>
 #include <iomanip>
 
@@ -25,14 +26,16 @@ public:
     
     void setPlayerSkin(std::string file);
     void handleInput(sf::Event& event, sf::RenderWindow& window);
-    screenState update(double dt);
+    screenState update(double dt, Over& overScreen);
     void render(sf::RenderWindow& window);
 
     void reset();
 
 private:
     sf::Font mFont;
-    sf::Text mAirText;
+    sf::Text mAirStr;
+    sf::RectangleShape mAirBar; 
+    sf::RectangleShape mAirFrame;
     sf::Text mScoreText;
 
     sf::Sprite mBackground;
@@ -41,6 +44,6 @@ private:
     Bubble mBubble;
     Row mRow[9];
 
-    double mAir = 10.0;
+    double mAir = 9.0;
     double mScore = 0.0;
 };

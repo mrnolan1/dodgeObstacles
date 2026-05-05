@@ -65,7 +65,7 @@ void Row::setRow(int row) {
 obsType Row::randomObsType(double dt) {
     static std::random_device rd;                   // a seed source for the random number engine
     static std::mt19937 gen(rd());                  // mersenne_twister_engine seeded with rd()
-    std::uniform_int_distribution<> dist(1, 1/dt); // Use distrib to transform the random unsigned int
+    std::uniform_int_distribution<> dist(1, 2/dt); // Use distrib to transform the random unsigned int
     int rand = dist(gen);
 
     if(rand == 1)
@@ -84,13 +84,18 @@ obsType Row::randomObsType(double dt) {
  * @return true 
  * @return false 
  */
-bool Row::eachCheckIfInCharColumn() {
-    if(mSlowObs.checkIfInCharColumn() || 
-        mMedObs.checkIfInCharColumn() ||
-        mFastObs.checkIfInCharColumn()) 
-            return true;
-    else 
-            return false;
+bool Row::eachCheckIfInCharColumn(causeOfDeath& codo) {
+    if(mSlowObs.checkIfInCharColumn()) {
+        codo = asteroid;
+        return true;
+    } else if(mMedObs.checkIfInCharColumn()) {
+        codo = spaceship;
+        return true;
+    } else if(mFastObs.checkIfInCharColumn()) {
+        codo = ufo;
+        return true;
+    } else 
+        return false;
 }
 
 /**

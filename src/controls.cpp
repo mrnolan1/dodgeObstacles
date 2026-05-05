@@ -61,7 +61,8 @@ Controls::Controls() {
     mMenu.setPosition({635, 600});
     mMenu.setSize({240, 100});
     mMenu.setColorTextNormal(sf::Color::White);
-    mMenu.setTextPosition({700,600});
+    mMenu.setTextSize(49);
+    mMenu.setTextPosition({705,600});
 
 
 }

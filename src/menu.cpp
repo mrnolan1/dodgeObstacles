@@ -27,7 +27,7 @@ Menu::Menu() {
     mTitle.setCharacterSize(110);
     mTitle.setString("Adrift");
     mTitle.setOrigin(mTitle.getGlobalBounds().width/2, mTitle.getGlobalBounds().height/2);
-    mTitle.setPosition({640, 150});
+    mTitle.setPosition({640, 175});
     //set the opacity to 0 so the text will fade in
     mTitle.setFillColor({0,0,0,0});
     
@@ -68,6 +68,8 @@ Menu::Menu() {
     mSkins.setColorTextNormal(sf::Color::White);
     mSkins.setTextSize(65);
     mSkins.setTextPosition({1100,430});
+
+    mHighscore.setFont(mFont);
 }
 
 /**
@@ -121,6 +123,37 @@ void Menu::update(double dt) {
     mSkins.update();
 
     moveBackground(dt);
+
+
+    
+    std::ifstream highscoreFile("ast/highscore.txt");
+    highscoreFile.seekg(0);
+
+    if (!highscoreFile) {
+        std::ofstream create("ast/highscore.txt");
+        create << "0";
+        create.close();
+    }
+
+    std::string highscoreStr;
+    std::getline(highscoreFile, highscoreStr);
+
+    double highscoreDbl = 0;
+
+    if (!highscoreStr.empty()) {
+        highscoreDbl = std::stod(highscoreStr);
+    }
+
+    std::ostringstream highscoreSS;
+    highscoreSS << "High Score " << std::setprecision(highscoreDbl < 1 ? 4 : 5) << highscoreDbl;
+
+    mHighscore.setString(highscoreSS.str());
+    mHighscore.setCharacterSize(25);
+    mHighscore.setOrigin(
+        mHighscore.getGlobalBounds().width / 2,
+        mHighscore.getGlobalBounds().height / 2
+    );
+    mHighscore.setPosition({640, 75});
 }
 
 /**
@@ -177,4 +210,5 @@ void Menu::render(sf::RenderWindow& window) {
     window.draw(mPlay);
     window.draw(mControls);
     window.draw(mSkins);
+    window.draw(mHighscore);
 }

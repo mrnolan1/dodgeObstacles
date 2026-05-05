@@ -103,13 +103,12 @@ Skins::Skins()
     mSkin3Button.setTextSize(40);
     mSkin3Button.setTextPosition({1110,545});
 
-    //set specifications for the exit button
-    mExitButton.setText("Back");
+    mExitButton.setText("Menu");
     mExitButton.setPosition({100, 65});
     mExitButton.setSize({150, 80});
     mExitButton.setColorTextNormal(sf::Color::White);
     mExitButton.setTextSize(30);
-    mExitButton.setTextPosition({215,75}); 
+    mExitButton.setTextPosition({210,75}); 
    
 
 }
