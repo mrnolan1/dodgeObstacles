@@ -110,7 +110,7 @@ void Over::setScreen(causeOfDeath cod, double score) {
     mYourScore.setPosition({640, 330});
 
 
-
+    mHighscoreFile.clear();
     mHighscoreFile.seekg(0);
 
     std::string highscoreStr;
