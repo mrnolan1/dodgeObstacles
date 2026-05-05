@@ -47,13 +47,13 @@ Controls::Controls() {
     
     mInstructions.setFont(mFont);
     mInstructions.setCharacterSize(25);
-    mInstructions.setString("       Objective: Avoid Asteroids, Spaceships and UFO's\n");
-    mInstructions.setPosition({30, 130});
+    mInstructions.setString("       Objective: Avoid Asteroids, Spaceships, and UFO's\n                 while collecting air bubbles to survive!");
+    mInstructions.setPosition({30, 150});
 
-    mInstructions2.setString("          How to move Character:\n              Press w to move up \n            press s to move down, \n Press space bar to start the game.\n");
+    mInstructions2.setString("               How to move Character:\n     Press w or up-arrow key to move up\nPress s or down-arrow key to move down \n    Press space bar to start the game\n");
     mInstructions2.setFont(mFont);
     mInstructions2.setCharacterSize(30);
-    mInstructions2.setPosition({180, 250});
+    mInstructions2.setPosition({140, 280});
     
 
     

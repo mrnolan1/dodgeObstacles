@@ -24,9 +24,9 @@ When you open the game, you can either select the play button or press space to 
 
 Dodge the obstacles (Spaceships, asteroids, UFOs). Your air will run out in 10 seconds, so collect air bubbles to stay alive.
 
-![Gameplay](rmScreenShots/skinsMenu.png)
+![Gameplay](rmScreenShots/gameplay.png)
 
-Move up: W or up-arrow key
+Move up: W or up-arrow key\n
 Move down: S or down-arrow key
 
 ### Changing Skins:
@@ -40,8 +40,6 @@ Select the back button to return to the main menu.
 
 To access the controls, select the CONTROLS button. You can then read the instructions for the game.
 Select the back button to return to the main menu.
-
-![Controls Screen](rmScreenShots/skinsMenu.png)
 
 ## What We Learned:
 
@@ -57,7 +55,7 @@ If we had more time, we would refactor a lot of our code to create more logical 
 
 We would also want to have the air bubbles not displaying on top of the other obstacles, to add more animations for the sprites, and to have arcade style initials for your high score.
 
-We got most of what we hoped to accomplish done.
+Other than those few things we didn't get to, we actually completed most of what we hoped to get done.
 
 
 
