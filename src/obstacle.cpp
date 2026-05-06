@@ -41,6 +41,16 @@ void Obstacle::reset() {
 }
 
 /**
+ * @brief Set position of obstacle (For testing purposes)
+ * 
+ * @param position 
+ */
+void Obstacle::setPosition(sf::Vector2f position)
+{
+    mSprite.setPosition(position);
+}
+
+/**
  * @brief Draw sprite to the window
  * 
  * @param window 

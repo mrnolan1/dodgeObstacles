@@ -23,6 +23,7 @@ public:
     bool checkIfInCharColumn(); 
     void setRow(int row);
     void reset();
+    void setPosition(sf::Vector2f posiiton);
 
 protected:
     float mCurSpeed = 0.f;
