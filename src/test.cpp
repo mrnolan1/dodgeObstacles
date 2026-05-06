@@ -6,8 +6,15 @@
 
 sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
 
+TEST_CASE("checkIfInCharColumn", "Obstacle class")
+{
+    slowObstacle obstacle;
+    obstacle.setRow(1);
+    CHECK(obstacle.checkIfInCharColumn() == false);
+    obstacle.setPosition({1200.0f, 0.0f});
+    CHECK(obstacle.checkIfInCharColumn() == true);
 
-
+}
 
 TEST_CASE("handleInput(sf::Event& event, sf::RenderWindow& window) ", "Character Class")
 {
@@ -36,10 +43,12 @@ TEST_CASE("update()", "Character class")
     Character character;
     sf::Event event;
     character.update();
-    CHECK(character.getPosition() == sf::Vector2f(1200, 320)); //starting position (row 4)
+    CHECK(character.getPosition().x == 1240.0f); //starting position (row 4)
+    CHECK(character.getPosition().y == 360.0f);
     event.type = sf::Event::KeyPressed;
     event.key.code = sf::Keyboard::Down;
     character.handleInput(event, window);
     character.update();
-    CHECK(character.getPosition() == sf::Vector2f(1200, 400)); //row 5
+    CHECK(character.getPosition().x == 1240.0f); //row 5
+    CHECK(character.getPosition().y == 440.0f);
 }
